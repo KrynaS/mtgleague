@@ -1,4 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Kryna\GitHub\mtgleague\.metadata\.plugins\org.eclipse.jdt.core
-4026721398.index
-2302591473.index
-3835102191.index
