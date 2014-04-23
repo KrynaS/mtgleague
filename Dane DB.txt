@@ -1,0 +1,5 @@
+Host:	db4free.net
+Port:	3306
+DB:	mtgleague
+Login:	mtgadmin
+Haslo:	mtglol123
