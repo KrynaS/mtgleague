@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 2014-04-09, 14:47:02
+    Document   : RegSuccess
+    Created on : May 7, 2014, 11:08:40 AM
     Author     : Lappa
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Zarejestrowano!</h1>
     </body>
 </html>
