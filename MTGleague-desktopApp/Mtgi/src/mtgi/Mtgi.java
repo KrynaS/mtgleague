@@ -39,17 +39,17 @@ public class Mtgi extends JFrame {
             Connection conn = null;
             try {
                 Class.forName(dbClass).newInstance();
-                System.out.println("driver loaded"); // THIS IS BEING RETURNED
+                System.out.println("driver loaded");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 System.err.println(ex);
             }
             try {
                 conn = DriverManager.getConnection(dbDriver, user, pass);
-                System.out.println("connected"); // THIS IS NOT BEING RETURNED
+                System.out.println("connected");
             } catch (SQLException ex) {
                 System.out.println("SQLException: " + ex.getMessage());
             }
-            String query = "Select Email, Haslo FROM Uzytkownik";
+            String query = "Select Email, Haslo, Id, Nick FROM Uzytkownik";
             Statement stmt = null;
             try {
                 stmt = conn.createStatement();
@@ -59,12 +59,16 @@ public class Mtgi extends JFrame {
             ResultSet rs;
             ArrayList<String> userzy1 = new ArrayList<String>();
             ArrayList<String> userzy2 = new ArrayList<String>();
+            ArrayList<Integer> userzy3 = new ArrayList<Integer>();
+            ArrayList<String> userzy4 = new ArrayList<String>();
             try {
                 rs = stmt.executeQuery(query);
                 while (rs.next()) {
                     //wyswietlDaneZBazy(rs);
                     userzy1.add(rs.getString(1));
                     userzy2.add(rs.getString(2));
+                    userzy3.add(Integer.parseInt(rs.getString(3)));
+                    userzy4.add(rs.getString(4));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,16 +84,24 @@ public class Mtgi extends JFrame {
                 if (field.getText().equals(userzy1.get(i)) && String.valueOf(passfield.getPassword()).equals(userzy2.get(i))) {
                     login = field.getText();
                     pass = String.valueOf(passfield.getPassword());
+                    id=userzy3.get(i);
+                    nick=userzy4.get(i);
+                    //System.out.println(nick+"  "+userzy4.get(i));
                     flaga=true;
                 }
             }
             
             if (flaga) {
-                //this.setVisible(false);
                 JOptionPane.showMessageDialog(null,
                         "Zalogowano jako: "+login);
-                        
-                        //System.out.println(login+"   "+pass);
+                okno okno = new okno(id, nick);
+                zamknij();
+                try {
+                    okno.stworz();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                okno.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Zły login lub hasło. Spróbuj ponownie",
@@ -117,7 +129,8 @@ public class Mtgi extends JFrame {
     ButtonOKListener btnOKListener;
     ButtonRegListener buttonRegListener;
     //ButtonCancelListener btnCancelListener;
-    String login,pass;
+    String login,pass,nick;
+    int id;
     JTextField field;
     JPasswordField passfield;
     public Mtgi() {
@@ -153,31 +166,29 @@ public class Mtgi extends JFrame {
         panel.add(lblMessage);
         
         this.add(panel);
+        
+        
     }
     
-    static String daneZBazy;
-    static void wyswietlDaneZBazy(ResultSet rs){
-		try{
-		daneZBazy = rs.getString(1);
-		System.out.println("\n" + daneZBazy + " ");
-		daneZBazy = rs.getString(2);
-		System.out.println(daneZBazy + " ");
-		//daneZBazy = rs.getString(3);
-		//System.out.println(daneZBazy);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+    void zamknij() {
+        this.setVisible(false);
+    }
+//    static String daneZBazy;
+//    static void wyswietlDaneZBazy(ResultSet rs){
+//		try{
+//		daneZBazy = rs.getString(1);
+//		System.out.println("\n" + daneZBazy + " ");
+//		daneZBazy = rs.getString(2);
+//		System.out.println(daneZBazy + " ");
+//		//daneZBazy = rs.getString(3);
+//		//System.out.println(daneZBazy);
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
     public static void main(String[] args) throws SQLException {
         Mtgi GUI = new Mtgi();
-        
-        
-        
-        
-        
-        
-        
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         GUI.setSize(200, 130);
@@ -186,7 +197,6 @@ public class Mtgi extends JFrame {
         int x = (dim.width - w) / 2;
         int y = (dim.height - h) / 2;
         GUI.setLocation(x, y);
-        
         GUI.setTitle("Logowanie");
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GUI.setResizable(false);
