@@ -1,0 +1,7 @@
+Testy wykonano na aplikacji desktopowej
+Kroki:
+1) zalogowanie
+2) do³¹czenie do dru¿yny
+3) opuszczenie dru¿yny
+4) odœwie¿enie
+5) zamkniêcie aplikacji

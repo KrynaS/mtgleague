@@ -4,6 +4,8 @@
  */
 package mtgi;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -29,9 +32,10 @@ public class okno extends javax.swing.JFrame {
     int userid;
     Connection conn;
     String nick, user, pass, dbClass, dbDriver;
-    /**
-     * Creates new form okno
-     */
+    ArrayList<Integer> idDruzyny;
+    ArrayList<String> druzyny;
+    ArrayList<String> kapitany;
+
     public okno(int i, String nic) {
         userid=i;
         nick = nic;
@@ -87,12 +91,11 @@ public class okno extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikacja Desktopowa");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +133,11 @@ public class okno extends javax.swing.JFrame {
         });
 
         jButton8.setText("Opuść drużynę");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -254,17 +262,25 @@ public class okno extends javax.swing.JFrame {
 
         jButton10.setText("Wyloguj");
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setText("Witaj");
-        jScrollPane3.setViewportView(jTextPane1);
+        jLabel1.setText("Witaj");
+
+        jButton11.setText("Odśwież");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton10))
@@ -272,11 +288,11 @@ public class okno extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton9)
-                        .addComponent(jButton10))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
                 .addGap(0, 43, Short.MAX_VALUE))
         );
 
@@ -299,20 +315,82 @@ public class okno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String nazwa = jComboBox1.getSelectedItem().toString();
+        if(nazwa!=null){
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null,
+                        "Nie wybrałeś drużyny!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        DolaczDruzyna a = new DolaczDruzyna(userid);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 160);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Dołącz do drużyny");
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        Object[] metody = new Object [druzyny.size()];
+        for(int i=0;i<druzyny.size();i++){
+            metody[i]=druzyny.get(i);
+        }
+        String s = (String) JOptionPane.showInputDialog(this, "Wybierz drużynę, którą chcesz opuścić", " ", JOptionPane.PLAIN_MESSAGE, null, metody, null);
+        if (s != null) {
+            String query = "DELETE FROM DruzynaUzytkownik Where IdUzytkownika=" + userid + " AND IdDruzyny=("
+                    + "SELECT Id FROM Druzyna WHERE Nazwa='"+s+"')";
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                stmt.executeUpdate(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }           
+//            try {
+//                conn.close();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            try {
+                setDruzynyTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        try {
+            stworz();
+        } catch (SQLException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,6 +429,7 @@ public class okno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -361,6 +440,7 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -368,47 +448,47 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
  
     void stworz() throws SQLException{
-        jTextPane1.setText("Witaj, "+nick);
+        jLabel1.setText("Witaj, "+nick);
         setDruzynyTable();
     }
     
     void setDruzynyTable() throws SQLException{        
+        String query = "Select d.Id, Nazwa, Nick FROM Druzyna d, Uzytkownik a, DruzynaUzytkownik du Where d.Id=IdDruzyny AND IdUzytkownika="+userid+" AND Kapitan=a.Id";
+        Statement stmt = null;
+        stmt = conn.createStatement();
+        ResultSet rs;
+        idDruzyny = new ArrayList<Integer>();
+        druzyny = new ArrayList<String>();
+        kapitany = new ArrayList<String>();
+        rs = stmt.executeQuery(query);
+        jComboBox1.removeAllItems();
+        while (rs.next()) {
+            idDruzyny.add(Integer.parseInt(rs.getString(1)));
+            druzyny.add(rs.getString(2));
+            kapitany.add(rs.getString(3));
+            if(rs.getString(3).equals(nick)){
+                jComboBox1.addItem(rs.getString(2));
+            }
+        }
+//        try {
+//            conn.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
         Object[] kolumny = new Object[3];
         kolumny[0] = "Id";
         kolumny[1] = "Nazwa";
         kolumny[2] = "Kapitan";
-        String query = "Select Id, Nazwa, Kapitan FROM Druzyna, DruzynaUzytkownik Where Id=IdDruzyny AND IdUzytkownika="+userid+"";
-        Statement stmt = null;
-        stmt = conn.createStatement();
-        ResultSet rs;
-        ArrayList<Integer> idGracza = new ArrayList<Integer>();
-        ArrayList<String> druzyny = new ArrayList<String>();
-        ArrayList<Integer> kapitany = new ArrayList<Integer>();
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            idGracza.add(Integer.parseInt(rs.getString(1)));
-            druzyny.add(rs.getString(2));
-            kapitany.add(Integer.parseInt(rs.getString(3)));
-            if(Integer.parseInt(rs.getString(3))==userid){
-                jComboBox1.addItem(rs.getString(2));
-            }
-        }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
         Object[][] tablicaobjektow=new Object[druzyny.size()][3]; //trzeba na odwrót wysokosc z szerokoscia
         for(int i=0;i<druzyny.size();i++){
-            tablicaobjektow[i][0] = idGracza.get(i);
+            tablicaobjektow[i][0] = idDruzyny.get(i);
             tablicaobjektow[i][1] = druzyny.get(i);
             tablicaobjektow[i][2] = kapitany.get(i);
         }

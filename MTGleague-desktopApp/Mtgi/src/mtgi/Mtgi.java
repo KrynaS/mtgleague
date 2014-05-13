@@ -6,6 +6,7 @@ package mtgi;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,7 +94,7 @@ public class Mtgi extends JFrame {
             
             if (flaga) {
                 JOptionPane.showMessageDialog(null,
-                        "Zalogowano jako: "+login);
+                        "Zalogowano jako: "+nick);
                 okno okno = new okno(id, nick);
                 zamknij();
                 try {
@@ -124,13 +125,14 @@ public class Mtgi extends JFrame {
 
     JButton btnOK,register;
     //JButton btnCancel;
-    JLabel lblMessage;
+    //JLabel lblMessage;
     JPanel panel;
     ButtonOKListener btnOKListener;
     ButtonRegListener buttonRegListener;
     //ButtonCancelListener btnCancelListener;
     String login,pass,nick;
     int id;
+    JLabel l1, l2;
     JTextField field;
     JPasswordField passfield;
     public Mtgi() {
@@ -141,10 +143,16 @@ public class Mtgi extends JFrame {
         btnOKListener = new ButtonOKListener();
         buttonRegListener = new ButtonRegListener();
         //btnCancelListener = new ButtonCancelListener();
+        l1 = new JLabel("Login");
+        l1.setAlignmentX(Component.CENTER_ALIGNMENT);
         field = new JTextField();
+        field.setText("123@wp.pl");
         //field.setColumns(10);
         field.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l2 = new JLabel("Hasło");
+        l2.setAlignmentX(Component.CENTER_ALIGNMENT);
         passfield = new JPasswordField();
+        passfield.setText("123");
         passfield.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         btnOK = new JButton("Zaloguj");
@@ -157,13 +165,15 @@ public class Mtgi extends JFrame {
         //btnCancel = new JButton("Cancel");
         //btnCancel.addActionListener(btnCancelListener);
         
-        lblMessage = new JLabel();
+        //lblMessage = new JLabel();
+        panel.add(l1);
         panel.add(field);
+        panel.add(l2);
         panel.add(passfield);
         panel.add(btnOK);
         panel.add(register);
         //pnlHolder.add(btnCancel);
-        panel.add(lblMessage);
+        //panel.add(lblMessage);
         
         this.add(panel);
         
@@ -172,6 +182,7 @@ public class Mtgi extends JFrame {
     
     void zamknij() {
         this.setVisible(false);
+        this.dispose();
     }
 //    static String daneZBazy;
 //    static void wyswietlDaneZBazy(ResultSet rs){
@@ -191,7 +202,7 @@ public class Mtgi extends JFrame {
         Mtgi GUI = new Mtgi();
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        GUI.setSize(200, 130);
+        GUI.setSize(200, 160);
         int w = GUI.getSize().width;
         int h = GUI.getSize().height;
         int x = (dim.width - w) / 2;
