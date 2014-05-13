@@ -52,7 +52,7 @@ public final class UserAdd_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<html>\n");
       out.write("\n");
-      out.write("<form ACTION=\"Kontrolery/UserAddController.jsp\">\n");
+      out.write("<form method=\"post\" ACTION=\"Kontrolery/UserAddController.jsp\">\n");
       out.write("    <center><table>\n");
       out.write("    <thead></thead>\n");
       out.write("    <tbody>\n");
