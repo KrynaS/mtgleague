@@ -95,7 +95,7 @@
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/Sklep/PanelAdmina.jsp">Powrót</a>
+<a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
 <%//}%>

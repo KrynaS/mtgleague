@@ -68,7 +68,7 @@
          Integer czyadmin=rs.getInt(9);
          String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
          String adress="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
-         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?id="+nruser;     
+         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
          %>
                     <td><%=nruser%></td>
                     <td><%=imie%></td>
@@ -104,7 +104,7 @@
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/Sklep/PanelAdmina.jsp">Powrót</a>
+<a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
 <%//}%>

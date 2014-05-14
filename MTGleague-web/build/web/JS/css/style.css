@@ -76,3 +76,39 @@ table tr {
 	color:#fff;
 }
 
+li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	float: left;
+	background-color: #fff;
+	padding: 1px 0 1px 1px;
+	border: 1px solid #000;
+}
+
+li {
+	float: left;
+}
+
+a:link, a:visited {
+        width:40%;
+        margin-left: auto;
+        margin-right:auto;
+        text-align: center;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	background: #000 ;
+	color: #fff;
+	padding: 10px 20px;
+	
+}
+
+a:hover {
+	background-color: #800;
+	
+}

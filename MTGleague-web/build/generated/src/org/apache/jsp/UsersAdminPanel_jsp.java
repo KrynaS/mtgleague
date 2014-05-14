@@ -53,7 +53,7 @@ if((String)session.getAttribute("login")==null){
 }
       out.write('\n');
  Integer admin=(Integer)session.getAttribute("idusera");
-if(admin==1){
+//if(admin==1){
       out.write('\n');
       out.write("\n");
       out.write("\n");
@@ -112,9 +112,9 @@ if(admin==1){
          String email=rs.getString(7);
          Integer block=rs.getInt(8);
          Integer czyadmin=rs.getInt(9);
-         String adres="http://localhost:8080/Sklep/Blokowanie.jsp?option=1&id="+nruser;
-         String adress="http://localhost:8080/Sklep/Blokowanie.jsp?option=0&id="+nruser;
-         String adres2="http://localhost:8080/Sklep/Blokowanie.jsp?option=2&id="+nruser;     
+         String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
+         String adress="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
+         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
          
       out.write("\n");
       out.write("                    <td>");
@@ -186,7 +186,7 @@ if(block==0){
       out.write("<a href=\"http://localhost:8080/Sklep/PanelAdmina.jsp\">Powrót</a>\n");
       out.write("        </body>\n");
       out.write("</html>\n");
-}
+//}
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
