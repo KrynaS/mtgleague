@@ -49,6 +49,10 @@ public class Mtgi extends JFrame {
                 System.out.println("connected");
             } catch (SQLException ex) {
                 System.out.println("SQLException: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null,
+                        "Baza danych jest wyłączona.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
             }
             String query = "Select Email, Haslo, Id, Nick FROM Uzytkownik";
             Statement stmt = null;
@@ -95,7 +99,7 @@ public class Mtgi extends JFrame {
             if (flaga) {
                 JOptionPane.showMessageDialog(null,
                         "Zalogowano jako: "+nick);
-                okno okno = new okno(id, nick);
+                okno okno = new okno(id, nick,mtgi);
                 zamknij();
                 try {
                     okno.stworz();
@@ -122,7 +126,7 @@ public class Mtgi extends JFrame {
 //            lblMessage.setText("The Cancel button was clicked");
 //        }
 //    }
-
+    Mtgi mtgi;
     JButton btnOK,register;
     //JButton btnCancel;
     //JLabel lblMessage;
@@ -136,6 +140,7 @@ public class Mtgi extends JFrame {
     JTextField field;
     JPasswordField passfield;
     public Mtgi() {
+        mtgi=this;
         login=null;
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -182,7 +187,7 @@ public class Mtgi extends JFrame {
     
     void zamknij() {
         this.setVisible(false);
-        this.dispose();
+        //this.dispose();
     }
 //    static String daneZBazy;
 //    static void wyswietlDaneZBazy(ResultSet rs){
@@ -200,7 +205,6 @@ public class Mtgi extends JFrame {
 
     public static void main(String[] args) throws SQLException {
         Mtgi GUI = new Mtgi();
-        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         GUI.setSize(200, 160);
         int w = GUI.getSize().width;

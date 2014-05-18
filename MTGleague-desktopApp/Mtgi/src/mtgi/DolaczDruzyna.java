@@ -32,6 +32,7 @@ import javax.swing.JTextField;
  */
 public class DolaczDruzyna extends JFrame {
     int identyfikator;
+    okno ok;
     class ButtonOKListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String user = "mtgadmin";
@@ -50,6 +51,10 @@ public class DolaczDruzyna extends JFrame {
                 System.out.println("connected");
             } catch (SQLException ex) {
                 System.out.println("SQLException: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null,
+                        "Baza danych jest wyłączona.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
             }
             String query = "Select Nazwa, Haslo, Id FROM Druzyna";
             Statement stmt = null;
@@ -124,12 +129,17 @@ public class DolaczDruzyna extends JFrame {
             if (flaga) {
                 JOptionPane.showMessageDialog(null,
                         "Dołączono do drużyny: "+druzyna);
+                try {
+                    ok.stworz();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DolaczDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setVisible(false);
                 dispose();
             } else {
                 if(!flaga2){
                     JOptionPane.showMessageDialog(null,
-                        "Drużyna nie istnieje lub podano błędne hasło.",
+                        "Podano błędne dane.",
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
                 }
@@ -167,7 +177,8 @@ public class DolaczDruzyna extends JFrame {
     JLabel l1, l2;
     JTextField field;
     JPasswordField passfield;
-    public DolaczDruzyna(int id) {
+    public DolaczDruzyna(int id, okno o) {
+        ok=o;
         identyfikator=id;
         //login=null;
         panel = new JPanel();

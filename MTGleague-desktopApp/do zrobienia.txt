@@ -1,0 +1,13 @@
+--------tworzenie dru¿yny
+BLOBY
+--------opuszczanie dru¿yny
+--------do³¹czanie dru¿yny
+--------wylogowanie
+--------edyjca profilu
+zrobiæ
+--------zarz¹dzanie dru¿ynami
+zrobiæ
+--------panel administracyjny
+zrobiæ
+--------
+--------

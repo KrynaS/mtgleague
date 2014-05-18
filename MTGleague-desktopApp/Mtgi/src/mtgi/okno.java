@@ -6,6 +6,9 @@ package mtgi;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -35,8 +38,9 @@ public class okno extends javax.swing.JFrame {
     ArrayList<Integer> idDruzyny;
     ArrayList<String> druzyny;
     ArrayList<String> kapitany;
-
-    public okno(int i, String nic) {
+    Mtgi mtgi;
+    public okno(int i, String nic, Mtgi m) {
+        mtgi=m;
         userid=i;
         nick = nic;
         user = "mtgadmin";
@@ -55,6 +59,10 @@ public class okno extends javax.swing.JFrame {
             System.out.println("connected");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,
+                        "Baza danych jest wyłączona.",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
         }
         
         initComponents();
@@ -261,6 +269,11 @@ public class okno extends javax.swing.JFrame {
         jButton9.setText("Profil");
 
         jButton10.setText("Wyloguj");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Witaj");
 
@@ -315,7 +328,18 @@ public class okno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        StworzDruzyna a = new StworzDruzyna(userid, this);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 200);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Stwórz drużyne");
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -332,7 +356,7 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DolaczDruzyna a = new DolaczDruzyna(userid);
+        DolaczDruzyna a = new DolaczDruzyna(userid, this);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         a.setSize(200, 160);
         int w = a.getSize().width;
@@ -357,31 +381,94 @@ public class okno extends javax.swing.JFrame {
         }
         String s = (String) JOptionPane.showInputDialog(this, "Wybierz drużynę, którą chcesz opuścić", " ", JOptionPane.PLAIN_MESSAGE, null, metody, null);
         if (s != null) {
-            String query = "DELETE FROM DruzynaUzytkownik Where IdUzytkownika=" + userid + " AND IdDruzyny=("
-                    + "SELECT Id FROM Druzyna WHERE Nazwa='"+s+"')";
-            Statement stmt = null;
+            boolean kapitan=false;
+            String query5 = "SELECT Kapitan FROM Druzyna WHERE Nazwa='"+s+"')";
+            Statement stmt5 = null;
             try {
-                stmt = conn.createStatement();
+                stmt5 = conn.createStatement();
             } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
             }
+            ResultSet rs5;
+            ArrayList<Integer> userzy5 = new ArrayList<Integer>();
             try {
-                stmt.executeUpdate(query);
+                rs5 = stmt5.executeQuery(query5);
+                while (rs5.next()) {
+                    userzy5.add(Integer.parseInt(rs5.getString(1)));
+                }
             } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-            }           
-//            try {
-//                conn.close();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            try {
-                setDruzynyTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
+            if(userzy5.get(0)==userid){
+                kapitan=true;
+            }            
+                String query = "DELETE FROM DruzynaUzytkownik Where IdUzytkownika=" + userid + " AND IdDruzyny=("
+                        + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
+                Statement stmt = null;
+                try {
+                    stmt = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt.executeUpdate(query);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String query2 = "Select IdUzytkownika FROM DruzynaUzytkownik WHERE IdDruzyny=("
+                        + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
+                Statement stmt2 = null;
+                try {
+                    stmt2 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ResultSet rs2;
+                ArrayList<Integer> userzy1 = new ArrayList<Integer>();
+                try {
+                    rs2 = stmt2.executeQuery(query2);
+                    while (rs2.next()) {
+                        userzy1.add(Integer.parseInt(rs2.getString(1)));
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (userzy1.size() == 0) {
+                    String query3 = "DELETE FROM Druzyna WHERE Nazwa='" + s + "'";
+                    Statement stmt3 = null;
+                    try {
+                        stmt3 = conn.createStatement();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        stmt3.executeUpdate(query3);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else{
+                    if(kapitan){
+                        String query7 = "UPDATE Druzyna SET Kapitan="+ userzy1.get(0) +" WHERE Nazwa='" + s + "'";
+                        Statement stmt7 = null;
+                        try {
+                            stmt7 = conn.createStatement();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        try {
+                            stmt7.executeUpdate(query7);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+                try {
+                    setDruzynyTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }       
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -391,6 +478,12 @@ public class okno extends javax.swing.JFrame {
             Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        mtgi.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +590,7 @@ public class okno extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
     }
     
