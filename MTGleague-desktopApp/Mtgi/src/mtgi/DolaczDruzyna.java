@@ -134,6 +134,11 @@ public class DolaczDruzyna extends JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(DolaczDruzyna.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setVisible(false);
                 dispose();
             } else {
@@ -144,11 +149,7 @@ public class DolaczDruzyna extends JFrame {
                         JOptionPane.ERROR_MESSAGE);
                 }
             }
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         }
     }
 //    class ButtonRegListener implements ActionListener {

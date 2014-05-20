@@ -7,6 +7,7 @@ package mtgi;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class okno extends javax.swing.JFrame {
     Connection conn;
     String nick, user, pass, dbClass, dbDriver;
     ArrayList<Integer> idDruzyny;
-    ArrayList<String> druzyny;
+    ArrayList<String> druzyny, druzynylead;
     ArrayList<String> kapitany;
     Mtgi mtgi;
     public okno(int i, String nic, Mtgi m) {
@@ -84,9 +85,9 @@ public class okno extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -130,9 +131,6 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {""}));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(123, 23));
-
         jButton3.setText("Dołącz do Drużyny");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,22 +145,28 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setText("Znajdź drużynę");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12)
+                .addGap(0, 216, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +175,9 @@ public class okno extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton8)
+                    .addComponent(jButton12))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -196,6 +200,11 @@ public class okno extends javax.swing.JFrame {
         jButton4.setText("Zapisz się na turniej");
 
         jButton5.setText("Zarządzaj turniejem");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Stwórz turniej");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +231,7 @@ public class okno extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
-                .addGap(0, 327, Short.MAX_VALUE))
+                .addGap(0, 337, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +270,7 @@ public class okno extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Turnieje", jPanel4);
@@ -313,7 +322,7 @@ public class okno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -343,9 +352,42 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String nazwa = jComboBox1.getSelectedItem().toString();
-        if(nazwa!=null){
+        //String nazwa = jComboBox1.getSelectedItem().toString();
+        Object[] kolumny = new Object[druzynylead.size()];
+        for (int i=0; i<druzynylead.size();i++){
+            kolumny[i]=druzynylead.get(i);
+        }           
+        String s = (String)JOptionPane.showInputDialog(this, "Wybierz drużynę", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, kolumny,null);
+        if(s!=null){
+            WyswietlGraczy b = null;
+            b = new WyswietlGraczy(s);
+            ZarzadzajDruzyna a = null;
+            try {
+                a = new ZarzadzajDruzyna(this, s, b);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            a.setSize(200, 465);
+            int w = a.getSize().width;
+            int h = a.getSize().height;
+            int x = (dim.width - w) / 2;
+            int y = (dim.height - h) / 2;
+            a.setLocation(x, y);
+            a.setTitle("Zarządzaj drużyną");
+            a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            a.setResizable(false);
+            a.setVisible(true);
+            
+            b.setSize(300, 465);
+            b.setLocation(x + 210, y);
+            b.setTitle("Lista Graczy");
+            b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            b.setResizable(false);
+            b.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null,
@@ -480,10 +522,91 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+        }
         mtgi.setVisible(true);
         setVisible(false);
         dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        String query5 = "SELECT Nazwa FROM Druzyna";
+        Statement stmt5 = null;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                }
+            }
+            if (flaga) {
+                WyswietlGraczy b = null;
+                b = new WyswietlGraczy(s);
+                ZnajdzDruzyna a = null;
+                try {
+                    a = new ZnajdzDruzyna(this, s, b);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 340);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Szczegóły drużyny");
+                a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+                
+                b.setSize(300, 340);
+                b.setLocation(x+210, y);
+                b.setTitle("Lista Graczy");
+                b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                b.setResizable(false);
+                b.setVisible(true);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Drużyna o takiej nazwie nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,
+                        "Nie podałeś nazwy!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -523,6 +646,7 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -531,7 +655,6 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -552,21 +675,22 @@ public class okno extends javax.swing.JFrame {
     }
     
     void setDruzynyTable() throws SQLException{        
-        String query = "Select d.Id, Nazwa, Nick FROM Druzyna d, Uzytkownik a, DruzynaUzytkownik du Where d.Id=IdDruzyny AND IdUzytkownika="+userid+" AND Kapitan=a.Id";
+        String query = "Select d.Id, Nazwa, Nick FROM Druzyna d, Uzytkownik a, DruzynaUzytkownik du Where d.Id=IdDruzyny AND IdUzytkownika="+userid+" AND Kapitan=a.Id AND czyZablokowana=0";
         Statement stmt = null;
         stmt = conn.createStatement();
         ResultSet rs;
         idDruzyny = new ArrayList<Integer>();
         druzyny = new ArrayList<String>();
+        druzynylead = new ArrayList<String>();
         kapitany = new ArrayList<String>();
         rs = stmt.executeQuery(query);
-        jComboBox1.removeAllItems();
+        //jComboBox1.removeAllItems();
         while (rs.next()) {
             idDruzyny.add(Integer.parseInt(rs.getString(1)));
             druzyny.add(rs.getString(2));
             kapitany.add(rs.getString(3));
             if(rs.getString(3).equals(nick)){
-                jComboBox1.addItem(rs.getString(2));
+                druzynylead.add(rs.getString(2));
             }
         }
 //        try {

@@ -12,8 +12,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,13 +41,14 @@ public class StworzDruzyna extends JFrame {
     okno ok;
     File file;
     FileInputStream fis;
+    PreparedStatement ps;
     StworzDruzyna to;
     JFileChooser jFileChooser1;
     class ButtonOKListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(field.getText()==null || passfield.getText()==null){
+            if(field.getText()==null || passfield.getText()==null  || fis==null){
                 JOptionPane.showMessageDialog(null,
-                            "Nie podano nazwy lub hasła.",
+                            "Nie podano nazwy, loga lub hasła.",
                             "Error Message",
                             JOptionPane.ERROR_MESSAGE);
             }
@@ -95,17 +98,42 @@ public class StworzDruzyna extends JFrame {
                     }
                 }
                 if (!flaga) {
-                    Statement stmt2 = null;
+
+//                    Statement stmt2 = null;
+//                    try {
+//                        stmt2 = conn.createStatement();
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    try {
+//                        stmt2.executeUpdate("INSERT INTO Druzyna (Nazwa, Haslo, Logo, Kapitan) VALUES ('" + field.getText() + "', '" + passfield.getText() + "', " + null + ", " + identyfikator + ")");
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(DolaczDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                    ps = null;
+                    String INSERT_PICTURE = "INSERT INTO Druzyna (Nazwa, Haslo, Logo, Kapitan) VALUES (?, ?, ?, ?)";
                     try {
-                        stmt2 = conn.createStatement();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                    conn.setAutoCommit(false);
+                    //File file = new File("myPhoto.png");
+                    //fis = new FileInputStream(file);
+                    ps = conn.prepareStatement(INSERT_PICTURE);
+                    ps.setString(1, field.getText());
+                    ps.setString(2, passfield.getText());
+                    ps.setBinaryStream(3, fis, (int) file.length());
+                    ps.setInt(4, identyfikator);
+                    ps.executeUpdate();
+                    conn.commit();
+                    }
+                    catch (SQLException ex) {
+                        Logger.getLogger(StworzDruzyna.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     try {
-                        stmt2.executeUpdate("INSERT INTO Druzyna (Nazwa, Haslo, Logo, Kapitan) VALUES ('" + field.getText() + "', '" + passfield.getText() + "', " + null + ", " + identyfikator + ")");
+                        conn.setAutoCommit(true);
                     } catch (SQLException ex) {
-                        Logger.getLogger(DolaczDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(StworzDruzyna.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
+                    
                     String query4 = "Select Id FROM Druzyna WHERE Nazwa='" + field.getText() + "'";
                     Statement stmt4 = null;
                     try {
@@ -143,19 +171,24 @@ public class StworzDruzyna extends JFrame {
                     } catch (SQLException ex) {
                         Logger.getLogger(DolaczDruzyna.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    try {
+                        ps.close();
+                        fis.close();
+                        conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(StworzDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     setVisible(false);
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "Drużyna o podanej nazwie już istnieje.",
+                            "Drużyna o podanej nazwie już istnieje lub nie wypełniłeś wszystkich pól.",
                             "Error Message",
                             JOptionPane.ERROR_MESSAGE);
                 }
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
             }
         }
     }
@@ -166,6 +199,7 @@ public class StworzDruzyna extends JFrame {
 //    }
     class ButtonWybListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            fis=null;
             jFileChooser1 = new javax.swing.JFileChooser();
             jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("pliki .PNG", "png"));
             jFileChooser1.setForeground(java.awt.Color.white);
@@ -201,6 +235,7 @@ public class StworzDruzyna extends JFrame {
     JLabel l1, l2, l3;
     JTextField field, passfield;
     public StworzDruzyna(int id, okno o) {
+        fis=null;
         to=this;
         ok=o;
         identyfikator=id;
