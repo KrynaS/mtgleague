@@ -54,7 +54,7 @@ public class Mtgi extends JFrame {
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
             }
-            String query = "Select Email, Haslo, Id, Nick FROM Uzytkownik";
+            String query = "Select Email, Haslo, Id, Nick, prawaAdmin FROM Uzytkownik";
             Statement stmt = null;
             try {
                 stmt = conn.createStatement();
@@ -66,6 +66,7 @@ public class Mtgi extends JFrame {
             ArrayList<String> userzy2 = new ArrayList<String>();
             ArrayList<Integer> userzy3 = new ArrayList<Integer>();
             ArrayList<String> userzy4 = new ArrayList<String>();
+            ArrayList<Integer> userzy5 = new ArrayList<Integer>();
             try {
                 rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -74,6 +75,7 @@ public class Mtgi extends JFrame {
                     userzy2.add(rs.getString(2));
                     userzy3.add(Integer.parseInt(rs.getString(3)));
                     userzy4.add(rs.getString(4));
+                    userzy5.add(Integer.parseInt(rs.getString(5)));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,6 +87,7 @@ public class Mtgi extends JFrame {
             }
             
             boolean flaga=false;
+            int adminek=0;
             for(int i=0; i<userzy1.size();i++){
                 if (field.getText().equals(userzy1.get(i)) && String.valueOf(passfield.getPassword()).equals(userzy2.get(i))) {
                     login = field.getText();
@@ -93,20 +96,31 @@ public class Mtgi extends JFrame {
                     nick=userzy4.get(i);
                     //System.out.println(nick+"  "+userzy4.get(i));
                     flaga=true;
+                    if(userzy5.get(i)==1){
+                        adminek=1;
+                    }
                 }
             }
             
             if (flaga) {
-                JOptionPane.showMessageDialog(null,
-                        "Zalogowano jako: "+nick);
-                okno okno = new okno(id, nick,mtgi);
-                zamknij();
-                try {
-                    okno.stworz();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                if(adminek==1){
+                    JOptionPane.showMessageDialog(null,
+                        "Jesteś adminem!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
                 }
-                okno.setVisible(true);
+                else{
+                    JOptionPane.showMessageDialog(null,
+                            "Zalogowano jako: " + nick);
+                    okno okno = new okno(id, nick, mtgi);
+                    zamknij();
+                    try {
+                        okno.stworz();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    okno.setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Zły login lub hasło. Spróbuj ponownie",

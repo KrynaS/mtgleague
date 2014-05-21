@@ -51,13 +51,13 @@ public class okno extends javax.swing.JFrame {
         conn = null;
         try {
             Class.forName(dbClass).newInstance();
-            System.out.println("driver loaded");
+            //System.out.println("driver loaded");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             System.err.println(ex);
         }
         try {
             conn = DriverManager.getConnection(dbDriver, user, pass);
-            System.out.println("connected");
+            //System.out.println("connected");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             JOptionPane.showMessageDialog(null,
@@ -276,6 +276,11 @@ public class okno extends javax.swing.JFrame {
         jTabbedPane1.addTab("Turnieje", jPanel4);
 
         jButton9.setText("Profil");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Wyloguj");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +327,7 @@ public class okno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -607,6 +612,29 @@ public class okno extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        EdycjaProfil a = null;
+        try {
+            a = new EdycjaProfil(this, userid);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 465);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Edycja Profilu");
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -60,13 +60,13 @@ public class StworzDruzyna extends JFrame {
                 Connection conn = null;
                 try {
                     Class.forName(dbClass).newInstance();
-                    System.out.println("driver loaded");
+                    //System.out.println("driver loaded");
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                     System.err.println(ex);
                 }
                 try {
                     conn = DriverManager.getConnection(dbDriver, user, pass);
-                    System.out.println("connected");
+                    //System.out.println("connected");
                 } catch (SQLException ex) {
                     System.out.println("SQLException: " + ex.getMessage());
                     JOptionPane.showMessageDialog(null,
@@ -113,16 +113,15 @@ public class StworzDruzyna extends JFrame {
                     ps = null;
                     String INSERT_PICTURE = "INSERT INTO Druzyna (Nazwa, Haslo, Logo, Kapitan) VALUES (?, ?, ?, ?)";
                     try {
-                    conn.setAutoCommit(false);
-                    //File file = new File("myPhoto.png");
-                    //fis = new FileInputStream(file);
-                    ps = conn.prepareStatement(INSERT_PICTURE);
-                    ps.setString(1, field.getText());
-                    ps.setString(2, passfield.getText());
-                    ps.setBinaryStream(3, fis, (int) file.length());
-                    ps.setInt(4, identyfikator);
-                    ps.executeUpdate();
-                    conn.commit();
+                        conn.setAutoCommit(false);
+                        //fis = new FileInputStream(file);
+                        ps = conn.prepareStatement(INSERT_PICTURE);
+                        ps.setString(1, field.getText());
+                        ps.setString(2, passfield.getText());
+                        ps.setBinaryStream(3, fis, (int) file.length());
+                        ps.setInt(4, identyfikator);
+                        ps.executeUpdate();
+                        conn.commit();
                     }
                     catch (SQLException ex) {
                         Logger.getLogger(StworzDruzyna.class.getName()).log(Level.SEVERE, null, ex);

@@ -45,170 +45,107 @@ import javax.swing.JTextField;
  *
  * @author Mateusz
  */
-public class ZarzadzajDruzyna extends JFrame {
+public class EdycjaProfil extends JFrame {
     okno ok;
-    WyswietlGraczy wg;
     String user;
     String pass;
     String dbClass;
     String dbDriver;
     Connection conn;
-    File image;
-    JFileChooser jFileChooser1;
-    FileInputStream fis;
-    PreparedStatement ps;
-    ZarzadzajDruzyna to;
+    EdycjaProfil to;
     //int idDruzynki;
-    String nazwaDruzyny;
-    String kapitan, kapitanpoczatek;
-    String haslo;
-    int czyZablokowana;
+    int idek;
     ArrayList<String>uzytkownicy;
-    class ButtonLogosListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            fis=null;
-            haslo=field3.getText();
-            kapitan=(String)(kapy.getSelectedItem());
-            jFileChooser1 = new javax.swing.JFileChooser();
-            jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("pliki .PNG", "png"));
-            jFileChooser1.setForeground(java.awt.Color.white);
-            int flaga = jFileChooser1.showOpenDialog(to);
-            if (flaga == javax.swing.JFileChooser.APPROVE_OPTION) {
-                //System.out.println("czy tu wchodzę?");
-                File image2=new File("java.png"); 
-                image2.delete();
-                image = jFileChooser1.getSelectedFile();
-                System.out.println(image);
-//                BufferedImage img=null;
-//                try {
-//                    img = ImageIO.read(jFileChooser1.getSelectedFile());
-//                } catch (IOException ex) {
-//                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                //BufferedImage img = null;
-//                try {
-//                    ImageIO.write(img, "png", jFileChooser1.getSelectedFile());
-//                } catch (IOException ex) {
-//                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-                //nazwaDruzyny="coz to?";
-                //to.remove(0);
-                //to.removeAll(); 
-                //to.updateUI();
-                //to.repaint();
-                Component[] comp = to.getContentPane().getComponents();
-                for (int i = 0; i < comp.length; i++) {
-                    if (comp[i] instanceof JPanel) {
-                        to.remove(comp[i]);
-                    }
-                }
-                to.revalidate();
-                to.repaint();
-                try {
-                    fis = new FileInputStream(image);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    narysuj();
-                } catch (IOException ex) {
-                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            else{
-                //System.out.println("oops");
-            }
-        }
-    }
+    
     
     class ButtonOKListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            haslo=field3.getText();
-            kapitan=(String)(kapy.getSelectedItem());
-            
-            ps = null;
-            String INSERT_PICTURE = "UPDATE Druzyna SET Logo =? WHERE Nazwa='" + druzynapoczatek + "'";
-            try {
-                conn.setAutoCommit(false);
-                try {
-                    fis = new FileInputStream(image);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ps = conn.prepareStatement(INSERT_PICTURE);
-                ps.setBinaryStream(1, fis, (int) image.length());
-                ps.executeUpdate();
-                conn.commit();
-            } catch (SQLException ex) {
-                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                conn.setAutoCommit(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            int kap=0;
-            String query2 = "Select id FROM Uzytkownik WHERE Nick='"+kapitan+"'";
-            Statement stmt2 = null;
-            try {
-                stmt2 = conn.createStatement();
-            } catch (SQLException ex) {
-                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ResultSet rs2;
-            //ArrayList<Integer> uzytkownicy = new ArrayList<Integer>();
-            try {
-                rs2 = stmt2.executeQuery(query2);
-                while (rs2.next()) {
-                    kap = (Integer.parseInt(rs2.getString(1)));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            
-            String query7 = "UPDATE Druzyna SET Kapitan='" + kap + "', Haslo='" + haslo + "' WHERE Nazwa='" + druzynapoczatek + "'";
-            Statement stmt7 = null;
-            try {
-                stmt7 = conn.createStatement();
-            } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                stmt7.executeUpdate(query7);
-            } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            String query3 = "DELETE FROM DruzynaUzytkownik WHERE idDruzyny=" + idek + " ";
-            for (int i = 0; i < uzytkownicy.size(); i++) {
-                query3 = query3 + " AND idUzytkownika!=(SELECT id FROM Uzytkownik WHERE Nick='"+uzytkownicy.get(i)+"')";
-                
-//                if (i != uzytkownicy.size() - 1) {
-//                    query3 = query3 + " AND idUzytkownika!=";
+//            haslo=field3.getText();
+//            kapitan=(String)(kapy.getSelectedItem());
+//            
+//            ps = null;
+//            String INSERT_PICTURE = "UPDATE Druzyna SET Logo =? WHERE Nazwa='" + druzynapoczatek + "'";
+//            try {
+//                conn.setAutoCommit(false);
+//                try {
+//                    fis = new FileInputStream(image);
+//                } catch (FileNotFoundException ex) {
+//                    Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
 //                }
-            }
-            //System.out.println(query3);
-            //query3 = query3 + ")";
-            Statement stmt3 = null;
-            try {
-                stmt3 = conn.createStatement();
-            } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                stmt3.executeUpdate(query3);
-            } catch (SQLException ex) {
-                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //file2.delete();
-            //image.delete();
-            File image2=new File("java.png"); 
-            image2.delete();
-            JOptionPane.showMessageDialog(null,
-                            "Zmiany zostały wprowadzone");
+//                ps = conn.prepareStatement(INSERT_PICTURE);
+//                ps.setBinaryStream(1, fis, (int) image.length());
+//                ps.executeUpdate();
+//                conn.commit();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            try {
+//                conn.setAutoCommit(true);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//            int kap=0;
+//            String query2 = "Select id FROM Uzytkownik WHERE Nick='"+kapitan+"'";
+//            Statement stmt2 = null;
+//            try {
+//                stmt2 = conn.createStatement();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            ResultSet rs2;
+//            //ArrayList<Integer> uzytkownicy = new ArrayList<Integer>();
+//            try {
+//                rs2 = stmt2.executeQuery(query2);
+//                while (rs2.next()) {
+//                    kap = (Integer.parseInt(rs2.getString(1)));
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ZarzadzajDruzyna.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//            
+//            
+//            String query7 = "UPDATE Druzyna SET Kapitan='" + kap + "', Haslo='" + haslo + "' WHERE Nazwa='" + druzynapoczatek + "'";
+//            Statement stmt7 = null;
+//            try {
+//                stmt7 = conn.createStatement();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            try {
+//                stmt7.executeUpdate(query7);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//            String query3 = "DELETE FROM DruzynaUzytkownik WHERE idDruzyny=" + idek + " ";
+//            for (int i = 0; i < uzytkownicy.size(); i++) {
+//                query3 = query3 + " AND idUzytkownika!=(SELECT id FROM Uzytkownik WHERE Nick='"+uzytkownicy.get(i)+"')";
+//                
+////                if (i != uzytkownicy.size() - 1) {
+////                    query3 = query3 + " AND idUzytkownika!=";
+////                }
+//            }
+//            //System.out.println(query3);
+//            //query3 = query3 + ")";
+//            Statement stmt3 = null;
+//            try {
+//                stmt3 = conn.createStatement();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            try {
+//                stmt3.executeUpdate(query3);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            //file2.delete();
+//            //image.delete();
+//            File image2=new File("java.png"); 
+//            image2.delete();
+//            JOptionPane.showMessageDialog(null,
+//                            "Zmiany zostały wprowadzone");
         }
     }
 //    class ButtonRegListener implements ActionListener {
@@ -310,10 +247,10 @@ public class ZarzadzajDruzyna extends JFrame {
     JButton Logos;
     //JLabel lblMessage;
     JPanel panel;
-    ZarzadzajDruzyna.ButtonOKListener btnOKListener;
-    ZarzadzajDruzyna.ButtonLogosListener btnLogosListener;
-    ZarzadzajDruzyna.ButtonDelListener btnDelListener;
-    ZarzadzajDruzyna.ButtonCancelListener btnCancelListener;
+    EdycjaProfil.ButtonOKListener btnOKListener;
+    EdycjaProfil.ButtonLogosListener btnLogosListener;
+    EdycjaProfil.ButtonDelListener btnDelListener;
+    EdycjaProfil.ButtonCancelListener btnCancelListener;
     String druzyna, druzynapoczatek;
     int idek;
     JLabel l1, l2, l3, l14;
@@ -321,12 +258,9 @@ public class ZarzadzajDruzyna extends JFrame {
     
     JComboBox kapy;
     //JPasswordField passfield;
-    public ZarzadzajDruzyna(okno o, String naz, WyswietlGraczy wgx) throws FileNotFoundException, IOException {
+    public EdycjaProfil(okno o, int nic) throws FileNotFoundException, IOException {
         ok=o;
         panel = new JPanel();
-        druzyna=naz;
-        druzynapoczatek=naz;
-        wg=wgx;
         fis=null;
         to=this;
         user = "mtgadmin";
@@ -426,10 +360,10 @@ public class ZarzadzajDruzyna extends JFrame {
         //this.repaint();
         
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        btnOKListener = new ZarzadzajDruzyna.ButtonOKListener();
-        btnDelListener = new ZarzadzajDruzyna.ButtonDelListener();
-        btnLogosListener = new ZarzadzajDruzyna.ButtonLogosListener();
-        btnCancelListener = new ZarzadzajDruzyna.ButtonCancelListener();
+        btnOKListener = new EdycjaProfil.ButtonOKListener();
+        btnDelListener = new EdycjaProfil.ButtonDelListener();
+        btnLogosListener = new EdycjaProfil.ButtonLogosListener();
+        btnCancelListener = new EdycjaProfil.ButtonCancelListener();
         //buttonRegListener = new DolaczDruzyna.ButtonRegListener();
         //btnCancelListener = new ButtonCancelListener();        
 //        BufferedImage img=ImageIO.read(image);

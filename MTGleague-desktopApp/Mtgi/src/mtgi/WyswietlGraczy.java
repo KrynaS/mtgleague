@@ -52,13 +52,13 @@ public class WyswietlGraczy extends JFrame{
         conn = null;
         try {
             Class.forName(dbClass).newInstance();
-            System.out.println("driver loaded");
+            //System.out.println("driver loaded");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             System.err.println(ex);
         }
         try {
             conn = DriverManager.getConnection(dbDriver, user, pass);
-            System.out.println("connected");
+            //System.out.println("connected");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             JOptionPane.showMessageDialog(null,
