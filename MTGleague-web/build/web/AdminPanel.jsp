@@ -10,7 +10,7 @@
         session.setAttribute("idusera",zidusera);
 }%>
 <% Integer admin=(Integer)session.getAttribute("idusera");
-//if(admin==1){%>
+if(admin==1){%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
      <a href="http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp">Turnieje</a></br>
      <a href="http://localhost:8080/MTGleague-web/TeamsAdminPanel.jsp">Drużyny</a></br>
      </br>
-     <a href="http://localhost:8080/Sklep/logout.jsp">Wyloguj</a></br>
+     <a href="http://localhost:8080/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
     </body>
 </html>
-<%//}%>
+<%}%>

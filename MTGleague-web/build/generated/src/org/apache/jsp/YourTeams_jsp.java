@@ -3,12 +3,14 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 
-public final class UsersAdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class YourTeams_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,15 +47,20 @@ public final class UsersAdminPanel_jsp extends org.apache.jasper.runtime.HttpJsp
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\n');
+      out.write('\n');
 if((String)session.getAttribute("login")==null){
 
         Integer zidusera=99999;
+        Integer znrusera=99999;
        
         session.setAttribute("idusera",zidusera);
+        session.setAttribute("nrusera",zidusera);
 }
       out.write('\n');
  Integer admin=(Integer)session.getAttribute("idusera");
-//if(admin==1){
+Integer nruser=(Integer)session.getAttribute("nrusera");
+if(nruser!=99999){
       out.write('\n');
       out.write("\n");
       out.write("\n");
@@ -68,24 +75,20 @@ if((String)session.getAttribute("login")==null){
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"JS/css/style.css\" />\n");
       out.write("         <script src=\"JS/sorttable.js\"></script>\n");
-      out.write("        <title>Uzytkownicy</title>\n");
+      out.write("        <title>Druzyny</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("      \n");
       out.write("        <table class=\"sortable\" border=\"1\">\n");
       out.write("            <thead>\n");
       out.write("                <tr>\n");
-      out.write("                    <th>ID</th>\n");
-      out.write("                    <th>IMIĘ</th>\n");
-      out.write("                    <th>NAZWISKO</th>\n");
-      out.write("                    <th>NICK</th>\n");
-      out.write("                    <th>DATA REJESTRACJI</th>\n");
+      out.write("                    \n");
+      out.write("                    <th>NAZWA</th>\n");
+      out.write("                    <th>KAPITAN</th>\n");
       out.write("                    <th>HASŁO</th>\n");
-      out.write("                    <th>EMAIL</th>\n");
-      out.write("                    <th>ZABLOKOWANY</th>\n");
-      out.write("                    <th>PRAWA</th>\n");
+      out.write("                    <th>SZCZEGÓŁY</th>\n");
       out.write("                    <th></th>\n");
-      out.write("                    <th></th>\n");
+      out.write("                    \n");
       out.write("                </tr>\n");
       out.write("            </thead>\n");
       out.write("            <tbody>\n");
@@ -95,76 +98,97 @@ if((String)session.getAttribute("login")==null){
       out.write("\n");
       out.write("        ");
 
+        ArrayList<Integer> myList = new ArrayList<Integer>();
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+        ArrayList<String> ksywaList = new ArrayList<String>();
+        String Kapitan2="";
         try{
     
      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
-     ResultSet rs=st.executeQuery("select id,Imie,Nazwisko,Nick,DataRejestracji,Haslo,Email,czyZablokowany,prawaAdmin from Uzytkownik");
+     ResultSet rs=st.executeQuery("select Id,Nick from Uzytkownik");
      while(rs.next())
          {
-         Integer nruser=rs.getInt(1);
-         String imie=rs.getString(2);
-         String Nazwisko=rs.getString(3);
-         String Nick=rs.getString(4);
-         String DataRejestracji=rs.getString(5);
-         String haslo=rs.getString(6);
-         String email=rs.getString(7);
-         Integer block=rs.getInt(8);
-         Integer czyadmin=rs.getInt(9);
-         String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
-         String adress="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
-         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
+         idList.add(rs.getInt(1));
+         ksywaList.add(rs.getString(2));
+         }
+                 
+     
+}catch(Exception e1)
+{}
+  
+        try{
+    
+     Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+     Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
+     Statement st=con.createStatement();
+     ResultSet rs=st.executeQuery("select IdDruzyny from DruzynaUzytkownik Where IdUzytkownika="+nruser);
+     while(rs.next())
+         {
+         myList.add(rs.getInt(1));
+         }
+                 
+     
+}catch(Exception e1)
+{}
+  
+     try{
+    
+     Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+     Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
+     Statement st=con.createStatement();
+     for(int i=0;i<myList.size();i++){
+     ResultSet rs=st.executeQuery("select Id,Nazwa,Kapitan,Haslo from Druzyna where Id="+myList.get(i));
+     while(rs.next())
+         {
+         Integer nr=rs.getInt(1);
+         String Nazwa=rs.getString(2);
+         Integer Kapitan=rs.getInt(3);
+         String haslo=rs.getString(4);
          
+        
+         String adres="http://localhost:8080/MTGleague-web/TeamEdit.jsp?id="+nr;
+         String adres2="http://localhost:8080/MTGleague-web/TeamDetails.jsp?id="+nr;
+       
+        
+      out.write("\n");
+      out.write("                    ");
+
+                    for(int j=0;j<idList.size();j++){
+                        if(Kapitan==idList.get(j)){
+                         Kapitan2=ksywaList.get(j); 
+                        }
+                        
+                        
+                    }
+                    
+                    
       out.write("\n");
       out.write("                    <td>");
-      out.print(nruser);
+      out.print(Nazwa);
       out.write("</td>\n");
       out.write("                    <td>");
-      out.print(imie);
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(Nazwisko);
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(Nick);
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(DataRejestracji);
+      out.print(Kapitan2);
       out.write("</td>\n");
       out.write("                    <td>");
       out.print(haslo);
       out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(email);
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(block);
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(czyadmin);
-      out.write("</td>\n");
-      out.write("                   ");
-if(block==0){
-                   
+      out.write("                    <td><input type=\"button\" value=\"Szczegóły\" onclick=\"location.href='");
+      out.print(adres2);
+      out.write("';\"></td>\n");
+      out.write("                    <td>\n");
+      out.write("                  ");
+ if(Kapitan==nruser){
       out.write("\n");
-      out.write("                   <td><input type=\"button\" value=\"Zablokuj\" onclick=\"location.href='");
+      out.write("                  <input type=\"button\" value=\"Edytuj\" onclick=\"location.href='");
       out.print(adres);
       out.write("';\">\n");
-      out.write("           </td>\n");
-      out.write("                   ");
-}else{
-      out.write("\n");
-      out.write("                    <td><input type=\"button\" value=\"Odblokuj\" onclick=\"location.href='");
-      out.print(adress);
-      out.write("';\">\n");
-      out.write("           </td>\n");
-      out.write("                   ");
+      out.write("                  \n");
+      out.write("           \n");
+      out.write("           ");
 }
       out.write("\n");
-      out.write("                    <td><input type=\"button\" value=\"Usuń\" onclick=\"location.href='");
-      out.print(adres2);
-      out.write("';\">\n");
       out.write("           </td>\n");
       out.write("                </tr>\n");
       out.write("         \n");
@@ -174,7 +198,7 @@ if(block==0){
 
          
          }
-                 
+    }          
      
 }catch(Exception e1)
 {}
@@ -183,10 +207,13 @@ if(block==0){
       out.write("\n");
       out.write("      </tbody>\n");
       out.write("        </table>\n");
-      out.write("<a href=\"http://localhost:8080/MTGleague-web/AdminPanel.jsp\">Powrót</a>\n");
+      out.write("      </br>\n");
+      out.write("      <a href=\"http://localhost:8080/MTGleague-web/TeamAdd.jsp\">Stwórz drużynę</a>\n");
+      out.write("      </br>\n");
+      out.write("<a href=\"http://localhost:8080/MTGleague-web/UserPanel.jsp\">Powrót</a>\n");
       out.write("        </body>\n");
       out.write("</html>\n");
-//}
+}
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

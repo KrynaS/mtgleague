@@ -5,7 +5,7 @@
         session.setAttribute("idusera",zidusera);
 }%>
 <% Integer admin=(Integer)session.getAttribute("idusera");
-//if(admin==1){%>
+if(admin==1){%>
 <%-- 
     Document   : PanelUsers
     Created on : 2014-01-09, 16:58:40
@@ -98,4 +98,4 @@
 <a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
-<%//}%>
+<%}%>
