@@ -40,8 +40,8 @@ import javax.swing.JTextField;
  *
  * @author Mateusz
  */
-public class ZnajdzDruzyna extends JFrame {
-    okno ok;
+public class ZnajdzDruzynaAdm extends JFrame {
+    oknoadm okadm;
     WyswietlGraczy wg;
     String user;
     String pass;
@@ -67,13 +67,13 @@ public class ZnajdzDruzyna extends JFrame {
     JPanel panel;
     //ZarzadzajDruzyna.ButtonOKListener btnOKListener;
     //DolaczDruzyna.ButtonRegListener buttonRegListener;
-    ZnajdzDruzyna.ButtonCancelListener btnCancelListener;
+    ZnajdzDruzynaAdm.ButtonCancelListener btnCancelListener;
     //String druzyna;
     JLabel l1, l2, l14;
     JTextField field, field2;
     //JPasswordField passfield;
-    public ZnajdzDruzyna(okno o, String naz, WyswietlGraczy wgx) throws FileNotFoundException, IOException {
-        ok=o;
+    public ZnajdzDruzynaAdm(oknoadm o, String naz, WyswietlGraczy wgx) throws FileNotFoundException, IOException {
+        okadm=o;
         wg=wgx;
         user = "mtgadmin";
         pass = "mtglol123";
@@ -131,7 +131,7 @@ public class ZnajdzDruzyna extends JFrame {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         //btnOKListener = new ZarzadzajDruzyna.ButtonOKListener();
-        btnCancelListener = new ZnajdzDruzyna.ButtonCancelListener();
+        btnCancelListener = new ZnajdzDruzynaAdm.ButtonCancelListener();
         //buttonRegListener = new DolaczDruzyna.ButtonRegListener();
         //btnCancelListener = new ButtonCancelListener();
         BufferedImage img=ImageIO.read(image);

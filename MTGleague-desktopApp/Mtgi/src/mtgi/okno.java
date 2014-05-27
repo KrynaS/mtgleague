@@ -104,7 +104,7 @@ public class okno extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Aplikacja Desktopowa");
+        setTitle("MTG Organizer");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,14 +124,14 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Zarządzaj Drużyną");
+        jButton2.setText("Zarządzaj drużyną");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Dołącz do Drużyny");
+        jButton3.setText("Dołącz do drużyny");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -166,7 +166,7 @@ public class okno extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12)
-                .addGap(0, 216, Short.MAX_VALUE))
+                .addGap(0, 220, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +351,7 @@ public class okno extends javax.swing.JFrame {
         int y = (dim.height - h) / 2;
         a.setLocation(x, y);
         a.setTitle("Stwórz drużyne");
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         a.setResizable(false);
         a.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -383,22 +383,16 @@ public class okno extends javax.swing.JFrame {
             int y = (dim.height - h) / 2;
             a.setLocation(x, y);
             a.setTitle("Zarządzaj drużyną");
-            a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             a.setResizable(false);
             a.setVisible(true);
             
             b.setSize(300, 465);
             b.setLocation(x + 210, y);
             b.setTitle("Lista Graczy");
-            b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             b.setResizable(false);
             b.setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(null,
-                        "Nie wybrałeś drużyny!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -412,7 +406,7 @@ public class okno extends javax.swing.JFrame {
         int y = (dim.height - h) / 2;
         a.setLocation(x, y);
         a.setTitle("Dołącz do drużyny");
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         a.setResizable(false);
         a.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -586,14 +580,14 @@ public class okno extends javax.swing.JFrame {
                 int y = (dim.height - h) / 2;
                 a.setLocation(x, y);
                 a.setTitle("Szczegóły drużyny");
-                a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 a.setResizable(false);
                 a.setVisible(true);
                 
                 b.setSize(300, 340);
                 b.setLocation(x+210, y);
                 b.setTitle("Lista Graczy");
-                b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 b.setResizable(false);
                 b.setVisible(true);
                 
@@ -604,12 +598,6 @@ public class okno extends javax.swing.JFrame {
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(null,
-                        "Nie podałeś nazwy!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -624,14 +612,14 @@ public class okno extends javax.swing.JFrame {
         }
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        a.setSize(200, 465);
+        a.setSize(200, 280);
         int w = a.getSize().width;
         int h = a.getSize().height;
         int x = (dim.width - w) / 2;
         int y = (dim.height - h) / 2;
         a.setLocation(x, y);
         a.setTitle("Edycja Profilu");
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         a.setResizable(false);
         a.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed

@@ -105,9 +105,24 @@ public class Mtgi extends JFrame {
             if (flaga) {
                 if(adminek==1){
                     JOptionPane.showMessageDialog(null,
-                        "Jesteś adminem!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+                            "Zalogowano jako: " + nick);
+                    oknoadm oknoadm = new oknoadm(id, nick, mtgi);
+                    zamknij();
+                    try {
+                        oknoadm.stworz();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                    //oknoadm.setSize(500, 215);
+                    int w = oknoadm.getSize().width;
+                    int h = oknoadm.getSize().height;
+                    int x = (dim.width - w) / 2;
+                    int y = (dim.height - h) / 2;
+                    oknoadm.setLocation(x, y);
+                    oknoadm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    oknoadm.setResizable(false);
+                    oknoadm.setVisible(true); 
                 }
                 else{
                     JOptionPane.showMessageDialog(null,
@@ -131,7 +146,8 @@ public class Mtgi extends JFrame {
     }
     class ButtonRegListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            
+            JOptionPane.showMessageDialog(null,
+                            "Reejstracja dostępna na naszej stronie.");
         }
     }
 
@@ -166,12 +182,14 @@ public class Mtgi extends JFrame {
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
         field = new JTextField();
         field.setText("123@wp.pl");
-        //field.setColumns(10);
+        //field.setText("rhynos15@o2.pl");
         field.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Hasło");
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
         passfield = new JPasswordField();
         passfield.setText("123");
+        //passfield.setText("haslo123");
+        
         passfield.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         btnOK = new JButton("Zaloguj");

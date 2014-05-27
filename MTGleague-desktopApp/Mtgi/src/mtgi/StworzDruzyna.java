@@ -40,7 +40,7 @@ public class StworzDruzyna extends JFrame {
     int identyfikator;
     okno ok;
     File file;
-    FileInputStream fis;
+    FileInputStream fis=null;
     PreparedStatement ps;
     StworzDruzyna to;
     JFileChooser jFileChooser1;
@@ -93,7 +93,7 @@ public class StworzDruzyna extends JFrame {
                 }
                 boolean flaga = false;
                 for (int i = 0; i < userzy1.size(); i++) {
-                    if (field.getText().equals(userzy1.get(i))) {
+                    if (field.getText().equals(userzy1.get(i)) || field.getText().length()>=60 || field.getText().length()==0 || passfield.getText().length() >= 255 || passfield.getText().length()==0) {
                         flaga = true;
                     }
                 }
@@ -183,7 +183,10 @@ public class StworzDruzyna extends JFrame {
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "Drużyna o podanej nazwie już istnieje lub nie wypełniłeś wszystkich pól.",
+                            "Wystąpił jeden z błędów:\n"
+                            + "Drużyna o podanej nazwie już istnieje;\n"
+                            + "Nazwa, którą podałeś ma 0 lub więcej niż 60 znaków;\n"
+                            + "Hasło, które podałeś ma 0 lub więcej niż 255 znaków.",
                             "Error Message",
                             JOptionPane.ERROR_MESSAGE);
                 }
@@ -205,8 +208,27 @@ public class StworzDruzyna extends JFrame {
             int flaga = jFileChooser1.showOpenDialog(to);
             if (flaga == javax.swing.JFileChooser.APPROVE_OPTION) {
                 file = jFileChooser1.getSelectedFile();
+                String nazwa=file.getName();
                 try {
-                    fis = new FileInputStream(file);
+                    if (nazwa.charAt(nazwa.length() - 4) == '.' && nazwa.charAt(nazwa.length() - 1) == 'g'
+                        && ((nazwa.charAt(nazwa.length() - 3) == 'p' && nazwa.charAt(nazwa.length() - 2) == 'n')
+                        || (nazwa.charAt(nazwa.length() - 3) == 'j' && nazwa.charAt(nazwa.length() - 2) == 'p'))) {
+                        if (file.length() < 65536) {
+                            fis = new FileInputStream(file);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null,
+                                    "Plik jest zbyt duży! Maksymalny rozmiar pliku to 64 KB.",
+                                    "Error Message",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    } 
+                    else {
+                        JOptionPane.showMessageDialog(null,
+                                "Wybrano błędny plik! Plik obrazu musi być rozszerzenia .png lub .jpg",
+                                "Error Message",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(StworzDruzyna.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -813,7 +813,7 @@ is divided into following sections:
             </sequential>
         </macrodef>
     </target>
-    <target name="-init-macrodef-copylibs">
+	<target name="-init-macrodef-copylibs">
         <macrodef name="copylibs" uri="http://www.netbeans.org/ns/j2se-project/3">
             <attribute default="${manifest.file}" name="manifest"/>
             <element name="customize" optional="true"/>
