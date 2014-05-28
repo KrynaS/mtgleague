@@ -101,7 +101,7 @@ if(nruser!=99999){%>
          
         
          String adres="http://localhost:8080/MTGleague-web/TeamEdit.jsp?id="+nr;
-         String adres2="http://localhost:8080/MTGleague-web/TeamDetails.jsp?id="+nr;
+         String adres2="http://localhost:8080/MTGleague-web/TeamDetails.jsp?option=1&id="+nr;
        
         %>
                     <%

@@ -24,7 +24,7 @@ if(nruser!=99999){%>
     </head>
     <body>
      <a href="http://localhost:8080/MTGleague-web/UserProfile.jsp">Profil</a></br>
-     <a href="http://localhost:8080/MTGleague-web/UsersAdminPanel.jsp1">Drużyny</a></br>
+     <a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Drużyny</a></br>
      <a href="http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp1">Turnieje</a></br>
      
      <a href="http://localhost:8080/MTGleague-web/YourTeams.jsp">Twoje Drużyny</a></br>
