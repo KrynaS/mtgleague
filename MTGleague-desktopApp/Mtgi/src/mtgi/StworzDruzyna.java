@@ -203,7 +203,7 @@ public class StworzDruzyna extends JFrame {
         public void actionPerformed(ActionEvent e) {
             fis=null;
             jFileChooser1 = new javax.swing.JFileChooser();
-            jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("pliki .PNG", "png"));
+            jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JPG and PNG", new String[] { "JPG", "PNG" }));
             jFileChooser1.setForeground(java.awt.Color.white);
             int flaga = jFileChooser1.showOpenDialog(to);
             if (flaga == javax.swing.JFileChooser.APPROVE_OPTION) {

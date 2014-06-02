@@ -98,6 +98,8 @@ public class oknoadm extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel Administracyjny");
@@ -194,6 +196,20 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setText("Daj administratora");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setText("Zabierz administratora");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -211,10 +227,12 @@ public class oknoadm extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,7 +295,10 @@ public class oknoadm extends javax.swing.JFrame {
                                 .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton11)))
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2))
@@ -295,9 +316,7 @@ public class oknoadm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -760,6 +779,116 @@ public class oknoadm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET prawaAdmin=1 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                            "Użytkownikowi "+s+" nadano prawa administratora.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Użytkownik o takim loginie nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET prawaAdmin=0 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                            "Użytkownikowi "+s+" zabrano prawa administratora.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Użytkownik o takim loginie nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -799,6 +928,8 @@ public class oknoadm extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

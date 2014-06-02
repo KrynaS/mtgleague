@@ -182,13 +182,13 @@ public class Mtgi extends JFrame {
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
         field = new JTextField();
         field.setText("123@wp.pl");
-        //field.setText("rhynos15@o2.pl");
+        field.setText("rhynos15@o2.pl");
         field.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Hasło");
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
         passfield = new JPasswordField();
         passfield.setText("123");
-        //passfield.setText("haslo123");
+        passfield.setText("haslo123");
         
         passfield.setAlignmentX(Component.CENTER_ALIGNMENT);
         

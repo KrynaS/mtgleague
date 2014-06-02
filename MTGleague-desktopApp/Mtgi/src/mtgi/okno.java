@@ -416,14 +416,15 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Object[] metody = new Object [druzyny.size()];
-        for(int i=0;i<druzyny.size();i++){
-            metody[i]=druzyny.get(i);
+        Object[] metody = new Object[druzyny.size()];
+        for (int i = 0; i < druzyny.size(); i++) {
+            metody[i] = druzyny.get(i);
         }
         String s = (String) JOptionPane.showInputDialog(this, "Wybierz drużynę, którą chcesz opuścić", " ", JOptionPane.PLAIN_MESSAGE, null, metody, null);
         if (s != null) {
-            boolean kapitan=false;
-            String query5 = "SELECT Kapitan FROM Druzyna WHERE Nazwa='"+s+"')";
+            boolean kapitan = false;
+            //znalezienie kapitana tej druzyny
+            String query5 = "SELECT Kapitan FROM Druzyna WHERE Nazwa='" + s + "'";
             Statement stmt5 = null;
             try {
                 stmt5 = conn.createStatement();
@@ -440,75 +441,78 @@ public class okno extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(userzy5.get(0)==userid){
-                kapitan=true;
-            }            
-                String query = "DELETE FROM DruzynaUzytkownik Where IdUzytkownika=" + userid + " AND IdDruzyny=("
-                        + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
-                Statement stmt = null;
+            if (userzy5.get(0) == userid) {
+                kapitan = true;
+            }
+            //usuniecie uzytkownika z tej druzyny
+            String query = "DELETE FROM DruzynaUzytkownik Where IdUzytkownika=" + userid + " AND IdDruzyny=("
+                    + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                stmt.executeUpdate(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //znalezienie ile osob w druzynei zostalo
+            String query2 = "Select IdUzytkownika FROM DruzynaUzytkownik WHERE IdDruzyny=("
+                    + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
+            Statement stmt2 = null;
+            try {
+                stmt2 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ResultSet rs2;
+            ArrayList<Integer> userzy1 = new ArrayList<Integer>();
+            try {
+                rs2 = stmt2.executeQuery(query2);
+                while (rs2.next()) {
+                    userzy1.add(Integer.parseInt(rs2.getString(1)));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (userzy1.size() == 0) {
+                //usuneicie druzyny jesli eni ma zawodnikow
+                String query3 = "DELETE FROM Druzyna WHERE Nazwa='" + s + "'";
+                Statement stmt3 = null;
                 try {
-                    stmt = conn.createStatement();
+                    stmt3 = conn.createStatement();
                 } catch (SQLException ex) {
                     Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
-                    stmt.executeUpdate(query);
+                    stmt3.executeUpdate(query3);
                 } catch (SQLException ex) {
                     Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                String query2 = "Select IdUzytkownika FROM DruzynaUzytkownik WHERE IdDruzyny=("
-                        + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
-                Statement stmt2 = null;
-                try {
-                    stmt2 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ResultSet rs2;
-                ArrayList<Integer> userzy1 = new ArrayList<Integer>();
-                try {
-                    rs2 = stmt2.executeQuery(query2);
-                    while (rs2.next()) {
-                        userzy1.add(Integer.parseInt(rs2.getString(1)));
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                if (userzy1.size() == 0) {
-                    String query3 = "DELETE FROM Druzyna WHERE Nazwa='" + s + "'";
-                    Statement stmt3 = null;
+            } else {
+                if (kapitan) {
+                    //przypisanie kapitana do 1 osoby
+                    String query7 = "UPDATE Druzyna SET Kapitan=" + userzy1.get(0) + " WHERE Nazwa='" + s + "'";
+                    Statement stmt7 = null;
                     try {
-                        stmt3 = conn.createStatement();
+                        stmt7 = conn.createStatement();
                     } catch (SQLException ex) {
                         Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     try {
-                        stmt3.executeUpdate(query3);
+                        stmt7.executeUpdate(query7);
                     } catch (SQLException ex) {
                         Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                else{
-                    if(kapitan){
-                        String query7 = "UPDATE Druzyna SET Kapitan="+ userzy1.get(0) +" WHERE Nazwa='" + s + "'";
-                        Statement stmt7 = null;
-                        try {
-                            stmt7 = conn.createStatement();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        try {
-                            stmt7.executeUpdate(query7);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                }
-                try {
-                    setDruzynyTable();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            }
+            try {
+                setDruzynyTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }       
     }//GEN-LAST:event_jButton8ActionPerformed
 

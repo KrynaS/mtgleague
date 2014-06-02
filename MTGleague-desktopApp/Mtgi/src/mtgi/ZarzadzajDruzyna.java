@@ -68,7 +68,7 @@ public final class ZarzadzajDruzyna extends JFrame {
             haslo=field3.getText();
             kapitan=(String)(kapy.getSelectedItem());
             jFileChooser1 = new javax.swing.JFileChooser();
-            jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("pliki .PNG", "png"));
+            jFileChooser1.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JPG and PNG", new String[] { "JPG", "PNG" }));//("pliki .PNG", "png"));
             jFileChooser1.setForeground(java.awt.Color.white);
             int flaga = jFileChooser1.showOpenDialog(to);
             if (flaga == javax.swing.JFileChooser.APPROVE_OPTION) {
@@ -123,7 +123,7 @@ public final class ZarzadzajDruzyna extends JFrame {
     class ButtonOKListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (field3.getText().length() >= 255 && field3.getText().length()>0) {
+            if (field3.getText().length() <= 255 && field3.getText().length()>0) {
                 haslo = field3.getText();
                 kapitan = (String) (kapy.getSelectedItem());
                 ps = null;
