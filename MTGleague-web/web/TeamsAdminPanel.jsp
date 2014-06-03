@@ -32,7 +32,7 @@ if(admin==1){%>
                 <tr>
                     <th>ID</th>
                     <th>NAZWA</th>
-                    <th>ID KAPITANA</th>
+                    <th>KAPITAN</th>
                     <th>HASŁO</th>
                     <th>ZABLOKOWANY</th>
                     <th>PRAWA</th>
@@ -51,12 +51,12 @@ if(admin==1){%>
      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
-     ResultSet rs=st.executeQuery("select Id,Nazwa,Kapitan,czyZablokowana,Haslo from Druzyna");
+     ResultSet rs=st.executeQuery("select d.Id,d.Nazwa,u.Nick,d.czyZablokowana,d.Haslo from Druzyna d,Uzytkownik u Where d.Kapitan=u.Id");
      while(rs.next())
          {
          Integer nr=rs.getInt(1);
          String Nazwa=rs.getString(2);
-         Integer Kapitan=rs.getInt(3);
+         String Kapitan=rs.getString(3);
          String haslo=rs.getString(5);
          Integer block=rs.getInt(4);
         

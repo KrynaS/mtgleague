@@ -22,8 +22,8 @@
     <tbody>
 
     <center>
-Już jesteś w tej drużynie</center>
-<center><a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Powrót</a></center>
+Już jesteś zapisany</center>
+
 </body>
 </html>
 

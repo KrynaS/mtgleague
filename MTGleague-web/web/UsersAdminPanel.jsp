@@ -41,6 +41,7 @@ if(admin==1){%>
                     <th>PRAWA</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +67,8 @@ if(admin==1){%>
          String email=rs.getString(7);
          Integer block=rs.getInt(8);
          Integer czyadmin=rs.getInt(9);
+         String adresdaj="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=2&id="+nruser;
+         String adreszabierz="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=3&id="+nruser;
          String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
          String adress="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
          String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
@@ -79,7 +82,8 @@ if(admin==1){%>
                     <td><%=email%></td>
                     <td><%=block%></td>
                     <td><%=czyadmin%></td>
-                   <%if(block==0){
+                    
+                   <%if(nruser!=2){if(block==0){
                    %>
                    <td><input type="button" value="Zablokuj" onclick="location.href='<%=adres%>';">
            </td>
@@ -87,8 +91,16 @@ if(admin==1){%>
                     <td><input type="button" value="Odblokuj" onclick="location.href='<%=adress%>';">
            </td>
                    <%}%>
-                    <td><input type="button" value="Usuń" onclick="location.href='<%=adres2%>';">
+                     <%if(czyadmin==0){
+                   %>
+                   <td><input type="button" value="Nadaj prawa" onclick="location.href='<%=adresdaj%>';">
            </td>
+                   <%}else{%>
+                    <td><input type="button" value="Zabierz prawa" onclick="location.href='<%=adreszabierz%>';">
+           </td>
+                   <%}%>
+                    <td><input type="button" value="Usuń" onclick="location.href='<%=adres2%>';">
+                    </td><%}else{%><td></td><td></td><td></td><%}%>
                 </tr>
          
          

@@ -42,6 +42,12 @@ opcja=Integer.parseInt(request.getParameter("option"));
      if(opcja==1){
      query3 = "UPDATE Uzytkownik SET czyZablokowany='1' WHERE id="+id;
      }
+     if(opcja==2){
+     query3 = "UPDATE Uzytkownik SET prawaAdmin='1' WHERE id="+id;
+     }
+     if(opcja==3){
+     query3 = "UPDATE Uzytkownik SET prawaAdmin='0' WHERE id="+id;
+     }
      if(opcja==0){
      query3 = "UPDATE Uzytkownik SET czyZablokowany='0' WHERE id="+id;
      }
