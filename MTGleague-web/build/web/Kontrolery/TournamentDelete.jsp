@@ -8,7 +8,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%
-
+Integer admin=(Integer)session.getAttribute("idusera");
 Integer id=0;
 id = Integer.parseInt(request.getParameter("id"));
      try{
@@ -24,9 +24,9 @@ id = Integer.parseInt(request.getParameter("id"));
      catch(SQLException ex){}
      
 
-
+    if(admin!=1){response.sendRedirect("http://localhost:8080/MTGleague-web/MyTournaments.jsp");}else{
     response.sendRedirect("http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp");
-
+    }
 
 
 

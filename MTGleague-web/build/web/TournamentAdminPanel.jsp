@@ -34,7 +34,7 @@ if(admin==1){%>
                     <th>NAZWA</th>
                     <th>TERMIN</th>
                     <th>TYP</th>
-                    <th>UCZESTNICY</th>
+                    <th>ZAŁOŻYCIEL</th>
                     <th></th>
                 </tr>
             </thead>
@@ -49,7 +49,7 @@ if(admin==1){%>
      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
-     ResultSet rs=st.executeQuery("select Id,Nazwa,Data,Typ,ListaUczestnikow from Turniej");
+     ResultSet rs=st.executeQuery("select Id,Nazwa,Data,Typ,Zalozyciel from Turniej");
      while(rs.next())
          {
          Integer nr=rs.getInt(1);

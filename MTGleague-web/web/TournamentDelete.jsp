@@ -8,7 +8,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%
-Integer admin=(Integer)session.getAttribute("idusera");
+
 Integer id=0;
 id = Integer.parseInt(request.getParameter("id"));
      try{
@@ -17,16 +17,18 @@ id = Integer.parseInt(request.getParameter("id"));
      Statement st=con.createStatement();
      String query3="DELETE from Turniej WHERE Id='"+id+"'";
      st.executeUpdate(query3);
-    // query3="DELETE from DruzynaUzytkownik WHERE IdUzytkownika='"+id+"'";
-    // st.executeUpdate(query3);
+     query3="DELETE from DruzynaTurniej WHERE IdTurnieju='"+id+"'";
+     st.executeUpdate(query3);
+     query3="DELETE from UzytkownikTurniej WHERE IdTurnieju='"+id+"'";
+     st.executeUpdate(query3);
        
      }
      catch(SQLException ex){}
      
 
-    if(admin!=1){response.sendRedirect("http://localhost:8080/MTGleague-web/MyTournaments.jsp");}else{
+
     response.sendRedirect("http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp");
-    }
+
 
 
 

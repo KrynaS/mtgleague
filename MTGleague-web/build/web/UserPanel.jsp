@@ -25,10 +25,11 @@ if(nruser!=99999){%>
     <body>
      <a href="http://localhost:8080/MTGleague-web/UserProfile.jsp">Profil</a></br>
      <a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Drużyny</a></br>
-     <a href="http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp1">Turnieje</a></br>
+     <a href="http://localhost:8080/MTGleague-web/Tournaments.jsp">Turnieje</a></br>
      
      <a href="http://localhost:8080/MTGleague-web/YourTeams.jsp">Twoje Drużyny</a></br>
      <a href="http://localhost:8080/MTGleague-web/TeamsAdminPanel1.jsp">Twoje Turnieje</a></br>
+      <a href="http://localhost:8080/MTGleague-web/MyTournaments.jsp">Organizowane Turnieje</a></br>
      </br>
      <a href="http://localhost:8080/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
     </body>
