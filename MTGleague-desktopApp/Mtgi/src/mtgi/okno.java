@@ -4,6 +4,7 @@
  */
 package mtgi;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
@@ -17,8 +18,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -27,6 +30,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -37,8 +41,9 @@ public class okno extends javax.swing.JFrame {
     Connection conn;
     String nick, user, pass, dbClass, dbDriver;
     ArrayList<Integer> idDruzyny;
-    ArrayList<String> druzyny, druzynylead;
+    ArrayList<String> druzyny, druzynylead,twojeturny, turniejkiin;
     ArrayList<String> kapitany;
+    ArrayList<TurniejKlasa> turnieje, twojeturnieje;
     Mtgi mtgi;
     public okno(int i, String nic, Mtgi m) {
         mtgi=m;
@@ -91,21 +96,41 @@ public class okno extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox();
         jButton7 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MTG Organizer");
+        setBackground(new java.awt.Color(0, 0, 0));
+        setResizable(false);
 
+        jTabbedPane1.setBackground(new java.awt.Color(102, 51, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane2.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -115,8 +140,15 @@ public class okno extends javax.swing.JFrame {
                 " ", " ", " ", " ", " "
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jTable1);
 
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setBackground(new java.awt.Color(102, 51, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Stwórz drużynę");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +156,8 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 51, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Zarządzaj drużyną");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +165,8 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 51, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Dołącz do drużyny");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +174,8 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(102, 51, 0));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Opuść drużynę");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +183,8 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setBackground(new java.awt.Color(102, 51, 0));
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setText("Znajdź drużynę");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,25 +206,23 @@ public class okno extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12)
-                .addGap(0, 220, Short.MAX_VALUE))
+                .addGap(0, 195, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton8)
-                    .addComponent(jButton12))
-                .addGap(30, 30, 30))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton1)
+                .addComponent(jButton2)
+                .addComponent(jButton3)
+                .addComponent(jButton8)
+                .addComponent(jButton12))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -192,68 +230,76 @@ public class okno extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Drużyny", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton4.setBackground(new java.awt.Color(102, 51, 0));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Zapisz się na turniej");
-
-        jButton5.setText("Zarządzaj turniejem");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Stwórz turniej");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jComboBox2.setPreferredSize(new java.awt.Dimension(56, 23));
-
+        jButton7.setBackground(new java.awt.Color(102, 51, 0));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Opuść turniej");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton13.setBackground(new java.awt.Color(102, 51, 0));
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("Znajdź turniej");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
-                .addGap(0, 337, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton13)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton4)
+                .addComponent(jButton7)
+                .addComponent(jButton13))
         );
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTable2.setBackground(new java.awt.Color(0, 0, 0));
+        jTable2.setForeground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "", "", "", ""
+                " ", " ", " ", " ", " "
             }
         ));
         jScrollPane1.setViewportView(jTable2);
@@ -263,18 +309,112 @@ public class okno extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Turnieje", jPanel4);
 
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel7.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel7.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel7.setName(""); // NOI18N
+        jPanel7.setPreferredSize(new java.awt.Dimension(335, 26));
+
+        jButton6.setBackground(new java.awt.Color(102, 51, 0));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Stwórz turniej");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(102, 51, 0));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Zarządzaj turniejem");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setBackground(new java.awt.Color(102, 51, 0));
+        jButton15.setForeground(new java.awt.Color(255, 255, 255));
+        jButton15.setText("Usuń turniej");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton15)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton5)
+                .addComponent(jButton6)
+                .addComponent(jButton15))
+        );
+
+        jScrollPane4.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTable4.setBackground(new java.awt.Color(0, 0, 0));
+        jTable4.setForeground(new java.awt.Color(255, 255, 255));
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                " ", " ", " ", " ", " "
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Twoje turnieje", jPanel6);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton9.setBackground(new java.awt.Color(102, 51, 0));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Profil");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +422,8 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setBackground(new java.awt.Color(102, 51, 0));
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Wyloguj");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,12 +431,25 @@ public class okno extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Witaj");
 
+        jButton11.setBackground(new java.awt.Color(102, 51, 0));
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
         jButton11.setText("Odśwież");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setBackground(new java.awt.Color(102, 51, 0));
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setText("Znajdź gracza");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
             }
         });
 
@@ -306,6 +461,8 @@ public class okno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
@@ -314,13 +471,12 @@ public class okno extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
-                .addGap(0, 43, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton9)
+                .addComponent(jButton10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton11)
+                .addComponent(jButton14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -335,7 +491,7 @@ public class okno extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -412,7 +568,18 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        StworzTurniej a = new StworzTurniej(userid, this);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 200);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Stwórz turniej");
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -458,6 +625,8 @@ public class okno extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(null,
+                                    "Opuściłeś drużynę "+s);
             //znalezienie ile osob w druzynei zostalo
             String query2 = "Select IdUzytkownika FROM DruzynaUzytkownik WHERE IdDruzyny=("
                     + "SELECT Id FROM Druzyna WHERE Nazwa='" + s + "')";
@@ -491,6 +660,8 @@ public class okno extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                JOptionPane.showMessageDialog(null,
+                                    "Z powodu braku zawodników, drużyna "+s+" została usunięta.");
             } else {
                 if (kapitan) {
                     //przypisanie kapitana do 1 osoby
@@ -506,10 +677,12 @@ public class okno extends javax.swing.JFrame {
                     } catch (SQLException ex) {
                         Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    JOptionPane.showMessageDialog(null,
+                                    "Nowym kapitanem drużyny "+s+" jest "+userzy1.get(0));
                 }
             }
             try {
-                setDruzynyTable();
+                stworz();
             } catch (SQLException ex) {
                 Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -536,7 +709,92 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        Object[] kolumny = new Object[twojeturny.size()];
+        for (int i=0; i<twojeturny.size();i++){
+            kolumny[i]=twojeturny.get(i);
+        }           
+        String s = (String)JOptionPane.showInputDialog(this, "Wybierz turniej", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, kolumny,null);
+        if(s!=null){
+            String query5 = "SELECT Typ FROM Turniej Where Nazwa='"+s+"'";
+            Statement stmt5 = null;
+            try {
+                stmt5 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ResultSet rs5;
+            ArrayList<String> userzy5 = new ArrayList<String>();
+            try {
+                rs5 = stmt5.executeQuery(query5);
+                while (rs5.next()) {
+                    userzy5.add(rs5.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(userzy5.get(0).equals("Two-Headed Giant")){
+                WyswietlGraczyTurniejDr b = null;
+                b = new WyswietlGraczyTurniejDr(s);
+                ZarzadzajTurniejemDr a = null;
+                try {
+                    a = new ZarzadzajTurniejemDr(this, s, b);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 255);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Zarządzaj turniejem");
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+
+                b.setSize(300, 255);
+                b.setLocation(x + 210, y);
+                b.setTitle("Lista Drużyn");
+                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                b.setResizable(false);
+                b.setVisible(true);
+            }
+            else {
+                WyswietlGraczyTurniej b = null;
+                b = new WyswietlGraczyTurniej(s);
+                ZarzadzajTurniejem a = null;
+                try {
+                    a = new ZarzadzajTurniejem(this, s, b);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 255);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Zarządzaj turniejem");
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+
+                b.setSize(300, 255);
+                b.setLocation(x + 210, y);
+                b.setTitle("Lista Graczy");
+                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                b.setResizable(false);
+                b.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -628,6 +886,260 @@ public class okno extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        Object[] metody = new Object[twojeturny.size()];
+        for (int i = 0; i < twojeturny.size(); i++) {
+            metody[i] = twojeturny.get(i);
+        }
+        String s = (String) JOptionPane.showInputDialog(this, "Wybierz turniej, który chcesz usunąć", " ", JOptionPane.PLAIN_MESSAGE, null, metody, null);
+        if (s != null) {
+            String query5 = "SELECT Id FROM Turniej WHERE nazwa ='"+s+"'";
+            Statement stmt5 = null;
+            try {
+                stmt5 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ResultSet rs5;
+            ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+            try {
+                rs5 = stmt5.executeQuery(query5);
+                while (rs5.next()) {
+                    userzy6.add(Integer.parseInt(rs5.getString(1)));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            String query3 = "DELETE FROM Turniej WHERE Nazwa='" + s + "'";
+            Statement stmt3 = null;
+            try {
+                stmt3 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                stmt3.executeUpdate(query3);
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String query2 = "DELETE FROM DruzynaTurniej WHERE IdTurnieju=" + userzy6.get(0) + "";
+            Statement stmt2 = null;
+            try {
+                stmt2 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                stmt2.executeUpdate(query2);
+            } catch (SQLException ex) {
+                Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null,
+                    "Turniej " + s + " został usunięty");
+        }
+        try {
+            stworz();
+        } catch (SQLException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DolaczTurniej a = new DolaczTurniej(userid, this);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 120);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Dołącz do turnieju");
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        String query5 = "SELECT Nick FROM Uzytkownik";
+        Statement stmt5 = null;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nick użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                }
+            }
+            if (flaga) {
+                WyswietlDruzyny b = null;
+                b = new WyswietlDruzyny(s);
+                ZnajdzGracza a = null;
+                try {
+                    a = new ZnajdzGracza(this, s, b);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 235);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Profil gracza");
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+                
+                b.setSize(300, 235);
+                b.setLocation(x+210, y);
+                b.setTitle("Lista Drużyn");
+                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                b.setResizable(false);
+                b.setVisible(true);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Gracz o takim nicku nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Object[] metody = new Object[turniejkiin.size()];
+        for (int i = 0; i < turniejkiin.size(); i++) {
+            metody[i] = turniejkiin.get(i);
+        }
+        String s = (String) JOptionPane.showInputDialog(this, "Wybierz turniej, który chcesz opuścić", " ", JOptionPane.PLAIN_MESSAGE, null, metody, null);
+        if (s != null) {
+            boolean kapitan = false;
+            //znalezienie kapitana tej druzyny
+            String query5 = "SELECT Nazwa, Typ FROM Turniej WHERE Nazwa='" + s + "'";
+            Statement stmt5 = null;
+            try {
+                stmt5 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ResultSet rs5;
+            ArrayList<String> userzy1 = new ArrayList<String>();
+            ArrayList<String> userzy2 = new ArrayList<String>();
+            try {
+                rs5 = stmt5.executeQuery(query5);
+                while (rs5.next()) {
+                    userzy1.add(rs5.getString(1));
+                    userzy2.add(rs5.getString(2));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(userzy2.get(0).equals("Two-Headed Giant")){
+                String query8 = "Select d.Nazwa, d.Id FROM Druzyna d, DruzynaUzytkownik du, DruzynaTurniej dt, Turniej t "
+                        + "Where dt.idTurnieju=t.Id AND du.IdDruzyny=dt.idDruzyny AND d.Id=du.IdDruzyny AND "
+                        + "du.IdUzytkownika=" + userid + " AND t.Nazwa='" + s + "' AND d.Kapitan=" + userid+"";
+                Statement stmt8 = null;
+                ArrayList<String> druzyny = new ArrayList<String>();
+                ArrayList<Integer> ajdiki = new ArrayList<Integer>();
+                try {
+                    stmt8 = conn.createStatement();
+                    ResultSet rs8;
+                    rs8 = stmt8.executeQuery(query8);
+                    //jComboBox1.removeAllItems();
+                    while (rs8.next()) {
+                        druzyny.add(rs8.getString(1));
+                        ajdiki.add(Integer.parseInt(rs8.getString(2)));
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DolaczTurniej.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Object[] metody2 = new Object[druzyny.size()];
+                for (int j = 0; j < druzyny.size(); j++) {
+                    metody2[j] = druzyny.get(j);
+                }
+                String s2 = (String) JOptionPane.showInputDialog(this, "Wybrany turniej jest turniejem drużynowym.\n Wybierz drużynę, której jesteś kapitanem.", "Wybierz drużynę", JOptionPane.PLAIN_MESSAGE, null, metody2, null);
+                if (s2 != null) {
+                    int idteamu = -1;
+                    for (int j = 0; j < druzyny.size(); j++) {
+                        if (s2.equals(druzyny.get(j))) {
+                            idteamu = ajdiki.get(j);
+                        }
+                    }
+                    String query = "DELETE FROM DruzynaTurniej Where IdDruzyny=" + idteamu + " AND IdTurnieju=("
+                            + "SELECT Id FROM Turniej WHERE Nazwa='" + s + "')";
+                    Statement stmt = null;
+                    try {
+                        stmt = conn.createStatement();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        stmt.executeUpdate(query);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null,
+                            "Wybrana drużyna opuściła turniej " + s);
+                    try {
+                        stworz();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else{
+                String query = "DELETE FROM UzytkownikTurniej Where IdUzytkownika=" + userid + " AND IdTurnieju=("
+                        + "SELECT Id FROM Turniej WHERE Nazwa='" + s + "')";
+                Statement stmt = null;
+                try {
+                    stmt = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt.executeUpdate(query);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                                    "Opuściłeś turniej "+s);
+                try {
+                    stworz();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            }
+
+            
+        }       
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -667,6 +1179,9 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -675,23 +1190,28 @@ public class okno extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
  
     void stworz() throws SQLException{
         jLabel1.setText("Witaj, "+nick);
         setDruzynyTable();
+        setTurniejeTable();
+        setTwojeTurniejeTable();
     }
     
     void setDruzynyTable() throws SQLException{        
@@ -713,11 +1233,6 @@ public class okno extends javax.swing.JFrame {
                 druzynylead.add(rs.getString(2));
             }
         }
-//        try {
-//            conn.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         
         Object[] kolumny = new Object[3];
         kolumny[0] = "Id";
@@ -732,10 +1247,144 @@ public class okno extends javax.swing.JFrame {
         jTable1 = new JTable(tablicaobjektow, kolumny);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(499);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(285);
+        jTable1.setBackground(Color.BLACK);
+        jTable1.setForeground(Color.WHITE);
         jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
     }
+    void setTurniejeTable() throws SQLException{        
+        turnieje = new ArrayList<TurniejKlasa>();
+        turniejkiin = new ArrayList<String>();
+        String query = "Select t.Id, t.Nazwa, t.Data, t.Typ, u.Nick FROM Turniej t, UzytkownikTurniej ut, Uzytkownik u "
+                + "Where t.Id=ut.idTurnieju AND ut.idUzytkownika="+userid+" AND t.Zalozyciel=u.Id";
+        Statement stmt = null;
+        stmt = conn.createStatement();
+        ResultSet rs;
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            turniejkiin.add(rs.getString(2));
+            turnieje.add(new TurniejKlasa(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "));
+        }
+        String query2 = "Select t.Id, t.Nazwa, t.Data, t.Typ, u.Nick, d.Nazwa FROM Turniej t, Druzyna d, DruzynaTurniej dt, DruzynaUzytkownik du, Uzytkownik u "
+                + "Where du.IdDruzyny=d.Id AND d.Id=dt.IdDruzyny AND dt.IdTurnieju=t.Id AND du.IdUzytkownika="+userid+" AND t.Zalozyciel=u.Id";
+        Statement stmt2 = null;
+        stmt2 = conn.createStatement();
+        ResultSet rs2;
+        rs2 = stmt2.executeQuery(query2);
+        while (rs2.next()) {
+            turniejkiin.add(rs2.getString(2));
+            turnieje.add(new TurniejKlasa(Integer.parseInt(rs2.getString(1)),rs2.getString(2),rs2.getString(3),rs2.getString(4),rs2.getString(5),rs2.getString(6)));
+        }
+        
+        ArrayList<TurniejKlasa> turnieje_sort = new ArrayList<TurniejKlasa>();
+        int ile_jeszcze_do_sortowania = turnieje.size();
+        int ile_razem_do_sortowania = turnieje.size();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        String datka = dateFormat.format(cal.getTime());
+        for (int f = 0; f < ile_razem_do_sortowania; f++) {
+            float min = 10000000;
+            int id = 0;
+            for (int i = 0; i < ile_jeszcze_do_sortowania; i++) {
+                if (turnieje.get(i).id < min) {
+                    min = turnieje.get(i).id;
+                    id = i;
+                }
+            }
+            ile_jeszcze_do_sortowania--;
+            if(turnieje.get(id).data.compareTo(datka)>=1 || turnieje.get(id).data.compareTo(datka)==0){
+                turnieje_sort.add(turnieje.get(id)); //wrzucamy tylko turnieje ktore sie nie odbyly lub sa dzisiaj
+            }
+            //System.out.println(turnieje.get(id).data+"   "+datka+"   "+turnieje.get(id).data.compareTo(datka));
+            turnieje.remove(id);
+        }
+        
+        
+        Object[] kolumny = new Object[6];
+        kolumny[0] = "Id";
+        kolumny[1] = "Nazwa";
+        kolumny[2] = "Data";
+        kolumny[3] = "Typ";
+        kolumny[4] = "Założyciel";
+        kolumny[5] = "Nazwa Drużyny";
+        Object[][] tablicaobjektow=new Object[turnieje_sort.size()][6]; //trzeba na odwrót wysokosc z szerokoscia
+        for(int i=0;i<turnieje_sort.size();i++){
+            tablicaobjektow[i][0] = turnieje_sort.get(i).id;
+            tablicaobjektow[i][1] = turnieje_sort.get(i).nazwa;
+            tablicaobjektow[i][2] = turnieje_sort.get(i).data;
+            tablicaobjektow[i][3] = turnieje_sort.get(i).typ;
+            tablicaobjektow[i][4] = turnieje_sort.get(i).zalozyciel;
+            tablicaobjektow[i][5] = turnieje_sort.get(i).druzyna;
+        }
+        jTable2 = new JTable(tablicaobjektow, kolumny);
+        jTable2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        jTable2.getColumnModel().getColumn(0).setPreferredWidth(34);
+        jTable2.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTable2.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTable2.getColumnModel().getColumn(3).setPreferredWidth(150);
+        jTable2.getColumnModel().getColumn(4).setPreferredWidth(200);
+        jTable2.getColumnModel().getColumn(5).setPreferredWidth(200);
+        jTable2.setBackground(Color.BLACK);
+        jTable2.setForeground(Color.WHITE);
+        jTable2.setEnabled(false);
+        jScrollPane1.setViewportView(jTable2);
+    }
     
+    void setTwojeTurniejeTable() throws SQLException{        
+        twojeturnieje = new ArrayList<TurniejKlasa>();
+        twojeturny = new ArrayList<String>();
+        String query = "Select t.Id, t.Nazwa, t.Data, t.Typ FROM Turniej t"
+                + " Where t.Zalozyciel="+userid+"";
+        Statement stmt = null;
+        stmt = conn.createStatement();
+        ResultSet rs;
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            twojeturny.add(rs.getString(2));
+            turnieje.add(new TurniejKlasa(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),null,null));
+        }
+        
+        ArrayList<TurniejKlasa> turnieje_sort = new ArrayList<TurniejKlasa>();
+        int ile_jeszcze_do_sortowania = turnieje.size();
+        int ile_razem_do_sortowania = turnieje.size();
+        for (int f = 0; f < ile_razem_do_sortowania; f++) {
+            float min = 10000000;
+            int id = 0;
+            for (int i = 0; i < ile_jeszcze_do_sortowania; i++) {
+                if (turnieje.get(i).id < min) {
+                    min = turnieje.get(i).id;
+                    id = i;
+                }
+            }
+            ile_jeszcze_do_sortowania--;
+            turnieje_sort.add(turnieje.get(id));
+            turnieje.remove(id);
+        }
+        
+        Object[] kolumny = new Object[4];
+        kolumny[0] = "Id";
+        kolumny[1] = "Nazwa";
+        kolumny[2] = "Data";
+        kolumny[3] = "Typ";
+        Object[][] tablicaobjektow=new Object[turnieje_sort.size()][4]; //trzeba na odwrót wysokosc z szerokoscia
+        for(int i=0;i<turnieje_sort.size();i++){
+            tablicaobjektow[i][0] = turnieje_sort.get(i).id;
+            tablicaobjektow[i][1] = turnieje_sort.get(i).nazwa;
+            tablicaobjektow[i][2] = turnieje_sort.get(i).data;
+            tablicaobjektow[i][3] = turnieje_sort.get(i).typ;
+        }
+        jTable4 = new JTable(tablicaobjektow, kolumny);
+        jTable4.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        jTable4.getColumnModel().getColumn(0).setPreferredWidth(34);
+        jTable4.getColumnModel().getColumn(1).setPreferredWidth(350);
+        jTable4.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTable4.getColumnModel().getColumn(3).setPreferredWidth(250);
+
+        jTable4.setBackground(Color.BLACK);
+        jTable4.setForeground(Color.WHITE);
+        jTable4.setEnabled(false);
+        jScrollPane4.setViewportView(jTable4);
+    }
 }

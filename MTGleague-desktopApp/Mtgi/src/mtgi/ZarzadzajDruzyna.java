@@ -209,6 +209,11 @@ public final class ZarzadzajDruzyna extends JFrame {
                 image2.delete();
                 JOptionPane.showMessageDialog(null,
                         "Zmiany zostały wprowadzone");
+                try {
+                    ok.stworz();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ZarzadzajTurniejem.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null,

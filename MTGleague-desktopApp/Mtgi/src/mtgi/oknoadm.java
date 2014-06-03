@@ -103,8 +103,14 @@ public class oknoadm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel Administracyjny");
+        setBackground(new java.awt.Color(0, 0, 0));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton9.setBackground(new java.awt.Color(102, 51, 0));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Profil");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,12 +118,18 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Witaj");
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Użytkownicy");
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jButton1.setBackground(new java.awt.Color(102, 51, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Znajdź użytkownika");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +137,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 51, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Usuń użytkownika");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,8 +146,12 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Drużyny");
 
+        jButton12.setBackground(new java.awt.Color(102, 51, 0));
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setText("Znajdź drużynę");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +159,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 51, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Zablokuj użytkownika");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +168,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(102, 51, 0));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Usuń drużynę");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +177,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 51, 0));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Zablokuj drużynę");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,8 +188,12 @@ public class oknoadm extends javax.swing.JFrame {
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Turnieje");
 
+        jButton6.setBackground(new java.awt.Color(102, 51, 0));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Znajdź turniej");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,8 +201,17 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(102, 51, 0));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Usuń turniej");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
+        jButton10.setBackground(new java.awt.Color(102, 51, 0));
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Wyloguj");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +219,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(102, 51, 0));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Odblokuj użytkownika");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +228,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton11.setBackground(new java.awt.Color(102, 51, 0));
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
         jButton11.setText("Odblokuj drużynę");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +237,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setBackground(new java.awt.Color(102, 51, 0));
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
         jButton13.setText("Daj administratora");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +246,8 @@ public class oknoadm extends javax.swing.JFrame {
             }
         });
 
+        jButton14.setBackground(new java.awt.Color(102, 51, 0));
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
         jButton14.setText("Zabierz administratora");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,6 +367,226 @@ public class oknoadm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET prawaAdmin=0 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownikowi "+s+" zabrano prawa administratora.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik o takim loginie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET prawaAdmin=1 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownikowi "+s+" nadano prawa administratora.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik o takim loginie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        String query5 = "SELECT Nazwa, Id FROM Druzyna";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Druzyna SET czyZablokowana=0 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna "+s+" została odblokowana");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna o takiej nazwie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET czyZablokowany=0 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik "+s+" został odblokowany");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik o takim loginie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         try {
             conn.close();
@@ -333,27 +598,250 @@ public class oknoadm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        EdycjaProfil a = null;
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String query5 = "SELECT Nazwa, Id FROM Turniej";
+        Statement stmt5 = null;
         try {
-            a = new EdycjaProfil(this, userid);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        a.setSize(200, 280);
-        int w = a.getSize().width;
-        int h = a.getSize().height;
-        int x = (dim.width - w) / 2;
-        int y = (dim.height - h) / 2;
-        a.setLocation(x, y);
-        a.setTitle("Edycja Profilu");
-        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        a.setResizable(false);
-        a.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String) JOptionPane.showInputDialog(this, "Podaj nazwę Turnieju", "Parametr", JOptionPane.PLAIN_MESSAGE, null, null, null);
+        if (s != null) {
+            boolean flaga = false;
+            for (int i = 0; i < userzy5.size(); i++) {
+                if (userzy5.get(i).equals(s)) {
+                    flaga = true;
+                }
+            }
+            if (flaga) {
+
+                String query3 = "DELETE FROM Turniej WHERE Nazwa='" + s + "'";
+                Statement stmt3 = null;
+                try {
+                    stmt3 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt3.executeUpdate(query3);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String query2 = "DELETE FROM DruzynaTurniej WHERE IdTurnieju=" + userzy6.get(0) + "";
+                Statement stmt2 = null;
+                try {
+                    stmt2 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt2.executeUpdate(query2);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Turniej " + s + " został usunięty");
+
+            } else {
+                JOptionPane.showMessageDialog(null,
+                    "Turniej o takiej nazwie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String query5 = "SELECT Nazwa, Id FROM Druzyna";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Druzyna SET czyZablokowana=1 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna "+s+" została zablokowana");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna o takiej nazwie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String query5 = "SELECT Nazwa, Id FROM Druzyna";
+        Statement stmt5 = null;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                }
+            }
+            if (flaga) {
+                String query3 = "DELETE FROM Druzyna WHERE Nazwa='" + s + "'";
+                Statement stmt3 = null;
+                try {
+                    stmt3 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt3.executeUpdate(query3);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String query2 = "DELETE FROM DruzynaUzytkownik WHERE IdDruzyny=" + userzy6.get(0) + "";
+                Statement stmt2 = null;
+                try {
+                    stmt2 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt2.executeUpdate(query2);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna "+s+" została usunięta");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Drużyna o takiej nazwie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String query5 = "SELECT Email, Id FROM Uzytkownik";
+        Statement stmt5 = null;
+        int idek=-1;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+                userzy6.add(Integer.parseInt(rs5.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                    idek=userzy6.get(i);
+                }
+            }
+            if (flaga) {
+                String query7 = "UPDATE Uzytkownik SET czyZablokowany=1 WHERE Id="+idek+"";
+                Statement stmt7 = null;
+                try {
+                    stmt7 = conn.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    stmt7.executeUpdate(query7);
+                } catch (SQLException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik "+s+" został zablokowany");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Użytkownik o takim loginie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         String query5 = "SELECT Nazwa FROM Druzyna";
@@ -421,185 +909,6 @@ public class oknoadm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String query5 = "SELECT Email, Id FROM Uzytkownik";
-        Statement stmt5 = null;
-        int idek=-1;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Uzytkownik SET czyZablokowany=1 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Użytkownik "+s+" został zablokowany");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Użytkownik o takim loginie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String query5 = "SELECT Nazwa, Id FROM Druzyna";
-        Statement stmt5 = null;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                }
-            }
-            if (flaga) {
-                String query3 = "DELETE FROM Druzyna WHERE Nazwa='" + s + "'";
-                Statement stmt3 = null;
-                try {
-                    stmt3 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt3.executeUpdate(query3);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                String query2 = "DELETE FROM DruzynaUzytkownik WHERE IdDruzyny=" + userzy6.get(0) + "";
-                Statement stmt2 = null;
-                try {
-                    stmt2 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt2.executeUpdate(query2);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Drużyna "+s+" została usunięta");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Drużyna o takiej nazwie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String query5 = "SELECT Nazwa, Id FROM Druzyna";
-        Statement stmt5 = null;
-        int idek=-1;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Druzyna SET czyZablokowana=1 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Drużyna "+s+" została zablokowana");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Drużyna o takiej nazwie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String query5 = "SELECT Email, Id FROM Uzytkownik";
         Statement stmt5 = null;
@@ -654,240 +963,104 @@ public class oknoadm extends javax.swing.JFrame {
                     Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 JOptionPane.showMessageDialog(null,
-                            "Użytkownik "+s+" został usunięty");
+                    "Użytkownik "+s+" został usunięty");
             }
             else{
                 JOptionPane.showMessageDialog(null,
-                        "Użytkownik o takim loginie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+                    "Użytkownik o takim loginie nie istnieje!",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String query5 = "SELECT Email, Id FROM Uzytkownik";
-        Statement stmt5 = null;
-        int idek=-1;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Uzytkownik SET czyZablokowany=0 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Użytkownik "+s+" został odblokowany");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Użytkownik o takim loginie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String query5 = "SELECT Nazwa, Id FROM Druzyna";
-        Statement stmt5 = null;
-        int idek=-1;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę drużyny", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Druzyna SET czyZablokowana=0 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Drużyna "+s+" została odblokowana");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Drużyna o takiej nazwie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String query5 = "SELECT Nick FROM Uzytkownik";
+        Statement stmt5 = null;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nick użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                }
+            }
+            if (flaga) {
+                WyswietlDruzyny b = null;
+                b = new WyswietlDruzyny(s);
+                ZnajdzGraczaAdm a = null;
+                try {
+                    a = new ZnajdzGraczaAdm(this, s, b);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 235);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Profil gracza");
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+                
+                b.setSize(300, 235);
+                b.setLocation(x+210, y);
+                b.setTitle("Lista Drużyn");
+                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                b.setResizable(false);
+                b.setVisible(true);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Gracz o takim nicku nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        String query5 = "SELECT Email, Id FROM Uzytkownik";
-        Statement stmt5 = null;
-        int idek=-1;
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        EdycjaProfil a = null;
         try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+            a = new EdycjaProfil(this, userid);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Uzytkownik SET prawaAdmin=1 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Użytkownikowi "+s+" nadano prawa administratora.");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Użytkownik o takim loginie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        String query5 = "SELECT Email, Id FROM Uzytkownik";
-        Statement stmt5 = null;
-        int idek=-1;
-        try {
-            stmt5 = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ResultSet rs5;
-        ArrayList<String> userzy5 = new ArrayList<String>();
-        ArrayList<Integer> userzy6 = new ArrayList<Integer>();
-        try {
-            rs5 = stmt5.executeQuery(query5);
-            while (rs5.next()) {
-                userzy5.add(rs5.getString(1));
-                userzy6.add(Integer.parseInt(rs5.getString(2)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = (String)JOptionPane.showInputDialog(this, "Podaj login użytkownika", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
-        if(s!=null){
-            boolean flaga = false;
-            for (int i=0;i<userzy5.size();i++){
-                if(userzy5.get(i).equals(s)){
-                    flaga=true;
-                    idek=userzy6.get(i);
-                }
-            }
-            if (flaga) {
-                String query7 = "UPDATE Uzytkownik SET prawaAdmin=0 WHERE Id="+idek+"";
-                Statement stmt7 = null;
-                try {
-                    stmt7 = conn.createStatement();
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    stmt7.executeUpdate(query7);
-                } catch (SQLException ex) {
-                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null,
-                            "Użytkownikowi "+s+" zabrano prawa administratora.");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,
-                        "Użytkownik o takim loginie nie istnieje!",
-                        "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton14ActionPerformed
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        a.setSize(200, 280);
+        int w = a.getSize().width;
+        int h = a.getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        a.setLocation(x, y);
+        a.setTitle("Edycja Profilu");
+        //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        a.setResizable(false);
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

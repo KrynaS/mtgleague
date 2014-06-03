@@ -11,11 +11,15 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -134,6 +138,9 @@ public class Mtgi extends JFrame {
                     } catch (SQLException ex) {
                         Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    okno.setLocation(5, 5);
+                    okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    okno.setResizable(false);
                     okno.setVisible(true);
                 }
             } else {
@@ -181,16 +188,17 @@ public class Mtgi extends JFrame {
         l1 = new JLabel("Login");
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
         field = new JTextField();
-        field.setText("123@wp.pl");
-        field.setText("rhynos15@o2.pl");
+        field.setText("123@wp.pl"); 
         field.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Hasło");
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
         passfield = new JPasswordField();
         passfield.setText("123");
-        passfield.setText("haslo123");
-        
         passfield.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        //field.setText("rhynos15@o2.pl");
+        //passfield.setText("haslo123");
+        
         
         btnOK = new JButton("Zaloguj");
         btnOK.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -213,8 +221,7 @@ public class Mtgi extends JFrame {
         //panel.add(lblMessage);
         
         this.add(panel);
-        
-        
+
     }
     
     void zamknij() {
