@@ -1,0 +1,5 @@
+usuniêcie nieu¿ywanych bibliotek
+usuniêcie zakomentowanego kodu, który nie bêdzie nigdy u¿yty
+dodanie niezbêdnych komentarzy
+usuniêcie nieu¿ywanych zmiennych, obiektów
+poprawienie formatowania kodu (usuniêcie zbêdnych enterów, zunifikowanie domykanie/otwieranie klamer przy instrukcjach warunkowych i pêtlach)
