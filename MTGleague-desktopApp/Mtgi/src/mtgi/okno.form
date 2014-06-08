@@ -155,7 +155,7 @@
                           <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="195" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -267,7 +267,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel5" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="780" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="854" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -411,8 +411,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane4" alignment="0" pref="780" max="32767" attributes="0"/>
-                  <Component id="jPanel7" alignment="0" pref="780" max="32767" attributes="0"/>
+                  <Component id="jScrollPane4" alignment="0" pref="854" max="32767" attributes="0"/>
+                  <Component id="jPanel7" alignment="0" pref="854" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

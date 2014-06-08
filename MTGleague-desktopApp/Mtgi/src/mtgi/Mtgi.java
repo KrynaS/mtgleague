@@ -187,15 +187,15 @@ public class Mtgi extends JFrame {
         //btnCancelListener = new ButtonCancelListener();
         l1 = new JLabel("Login");
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        field = new JTextField();
-        field.setText("123@wp.pl"); 
+        field = new JTextField();       
         field.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Hasło");
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
         passfield = new JPasswordField();
-        passfield.setText("123");
         passfield.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        //field.setText("123@wp.pl"); 
+        //passfield.setText("123");
         //field.setText("rhynos15@o2.pl");
         //passfield.setText("haslo123");
         

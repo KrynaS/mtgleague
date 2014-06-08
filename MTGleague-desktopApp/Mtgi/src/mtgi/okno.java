@@ -206,7 +206,7 @@ public class okno extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12)
-                .addGap(0, 195, Short.MAX_VALUE))
+                .addGap(0, 269, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +309,7 @@ public class okno extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,8 +397,8 @@ public class okno extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,7 +961,69 @@ public class okno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
+        String query5 = "SELECT Nazwa FROM Turniej";
+        Statement stmt5 = null;
+        try {
+            stmt5 = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs5;
+        ArrayList<String> userzy5 = new ArrayList<String>();
+        try {
+            rs5 = stmt5.executeQuery(query5);
+            while (rs5.next()) {
+                userzy5.add(rs5.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mtgi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = (String)JOptionPane.showInputDialog(this, "Podaj nazwę turnieju", "Parametr",  JOptionPane.PLAIN_MESSAGE, null, null,null);
+        if(s!=null){
+            boolean flaga = false;
+            for (int i=0;i<userzy5.size();i++){
+                if(userzy5.get(i).equals(s)){
+                    flaga=true;
+                }
+            }
+            if (flaga) {
+                //WyswietlDruzyny b = null;
+                //b = new WyswietlDruzyny(s);
+                ZnajdzTurniej a = null;
+                try {
+                    a = new ZnajdzTurniej(this, s);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(okno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                a.setSize(200, 200);
+                int w = a.getSize().width;
+                int h = a.getSize().height;
+                int x = (dim.width - w) / 2;
+                int y = (dim.height - h) / 2;
+                a.setLocation(x, y);
+                a.setTitle("Informacje o turnieju");
+                //a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setResizable(false);
+                a.setVisible(true);
+                
+//                b.setSize(300, 235);
+//                b.setLocation(x+210, y);
+//                b.setTitle("Lista Drużyn");
+//                //b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                b.setResizable(false);
+//                b.setVisible(true);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                        "Turniej o podanej nazwie nie istnieje!",
+                        "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
