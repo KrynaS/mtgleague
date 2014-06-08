@@ -69,9 +69,9 @@ if(nruser!=99999){%>
          String typ=rs.getString(4);
          
         
-         String adres="http://localhost:8080/MTGleague-web/TournamentEdit.jsp?id="+nr;
-         String adres2="http://localhost:8080/MTGleague-web/TournamentDetails.jsp?option="+typ+"&id="+nr;
-         String adres3="http://localhost:8080/MTGleague-web/Kontrolery/TournamentDelete.jsp?id="+nr;
+         String adres="/MTGleague-web/TournamentEdit.jsp?id="+nr;
+         String adres2="/MTGleague-web/TournamentDetails.jsp?option="+typ+"&id="+nr;
+         String adres3="/MTGleague-web/Kontrolery/TournamentDelete.jsp?id="+nr;
        
                    
                         
@@ -102,9 +102,9 @@ if(nruser!=99999){%>
       </tbody>
         </table>
       </br>
-      <a href="http://localhost:8080/MTGleague-web/TournamentAdd.jsp">Zorganizuj turniej</a>
+      <a href="/MTGleague-web/TournamentAdd.jsp">Zorganizuj turniej</a>
       </br>
-<a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

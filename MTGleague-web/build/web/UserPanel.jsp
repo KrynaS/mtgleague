@@ -23,15 +23,20 @@ if(nruser!=99999){%>
         <link rel="stylesheet" href="JS/css/style.css" />
     </head>
     <body>
-     <a href="http://localhost:8080/MTGleague-web/UserProfile.jsp">Profil</a></br>
-     <a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Drużyny</a></br>
-     <a href="http://localhost:8080/MTGleague-web/Tournaments.jsp">Turnieje</a></br>
+     <a href="/MTGleague-web/UserProfile.jsp">Profil</a></br>
+     <a href="/MTGleague-web/TeamsSearch.jsp">Drużyny</a></br>
+     <a href="/MTGleague-web/Tournaments.jsp">Turnieje</a></br>
      
-     <a href="http://localhost:8080/MTGleague-web/YourTeams.jsp">Twoje Drużyny</a></br>
-     <a href="http://localhost:8080/MTGleague-web/TeamsAdminPanel1.jsp">Twoje Turnieje</a></br>
-      <a href="http://localhost:8080/MTGleague-web/MyTournaments.jsp">Organizowane Turnieje</a></br>
+     <a href="/MTGleague-web/YourTeams.jsp">Twoje Drużyny</a></br>
+     <a href="/MTGleague-web/YourTournaments.jsp">Twoje Turnieje</a></br>
+      <a href="/MTGleague-web/MyTournaments.jsp">Organizowane Turnieje</a></br>
+      <%if(admin==1){
+          %>
+             <a href="AdminPanel.jsp">Panel Administracyjny</a></br>  
+                   <%}%>
+      
      </br>
-     <a href="http://localhost:8080/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
+     <a href="/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
     </body>
 </html>
 <%}%>

@@ -73,7 +73,7 @@ if(nruser!=99999){%>
 </br>
 </br>
 </br>
-    <a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+    <a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
   
 
 </body>

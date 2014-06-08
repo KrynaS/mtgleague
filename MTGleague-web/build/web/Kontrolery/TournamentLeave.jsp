@@ -3,34 +3,29 @@
     Created on : 2014-05-05, 18:11:54
     Author     : ML
 --%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
- <%if((String)session.getAttribute("login")==null){
-
-        Integer zidusera=99999;
-        Integer znrusera=99999;
-       
-        session.setAttribute("idusera",zidusera);
-        session.setAttribute("nrusera",zidusera);
-}%>
-<% Integer admin=(Integer)session.getAttribute("idusera");
-Integer nruser=(Integer)session.getAttribute("nrusera");
-if(nruser!=99999){%>
 <%
 
 Integer id=0;
 id = Integer.parseInt(request.getParameter("id"));
-     
-    
+Integer opcja=0;
+opcja = Integer.parseInt(request.getParameter("option"));
+Integer did=0;
+did = Integer.parseInt(request.getParameter("did"));
      try{
      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
-     String query3="DELETE from DruzynaUzytkownik WHERE IdDruzyny='"+id+"' AND IdUzytkownika='"+nruser+"'";
+     String query3="";
+      if(opcja==0){
+     query3="DELETE from DruzynaTurniej WHERE IdDruzyny='"+did+"' AND IdTurnieju='"+id+"'";
+         }else{
+     query3="DELETE from UzytkownikTurniej WHERE IdUzytkownika='"+did+"' AND IdTurnieju='"+id+"'";
+         
+         }
      st.executeUpdate(query3);
        
      }
@@ -38,7 +33,7 @@ id = Integer.parseInt(request.getParameter("id"));
      
 
 
-    response.sendRedirect("/MTGleague-web/YourTeams.jsp");
+    response.sendRedirect("/MTGleague-web/UserPanel.jsp");
 
 
 
@@ -58,4 +53,3 @@ id = Integer.parseInt(request.getParameter("id"));
         
     </body>
 </html>
-<%}%>

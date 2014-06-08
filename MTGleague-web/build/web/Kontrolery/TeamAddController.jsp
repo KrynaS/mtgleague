@@ -43,7 +43,7 @@ if(nruser!=99999){%>
              String query2 = "INSERT INTO Druzyna (Nazwa,Logo,Kapitan,czyZablokowana,Haslo) ";
              query2 += "VALUES('"+imie+"',null, '"+nruser+"', '0' , '"+haslo+"');";
              st.executeUpdate(query2);
-            response.sendRedirect("http://localhost:8080/MTGleague-web/Kontrolery/TeamAddConController.jsp?Nazwa="+imie);
+            response.sendRedirect("/MTGleague-web/Kontrolery/TeamAddConController.jsp?Nazwa="+imie);
              
 
              

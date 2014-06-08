@@ -38,7 +38,7 @@
              query2 += "VALUES('"+imie+"', '"+nazwisko+"', '"+nick+"' ,CURDATE(), '"+haslo+"' , '"+email+"','0','0');";
              st.executeUpdate(query2);
            
-                         response.sendRedirect("http://localhost:8080/MTGleague-web/RegSuccess.jsp");
+                         response.sendRedirect("/MTGleague-web/RegSuccess.jsp");
 
                            }       
              }

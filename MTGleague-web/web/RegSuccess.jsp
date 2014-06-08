@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Zarejestrowano!</h1>
-        <%response.sendRedirect("http://localhost:8080/MTGleague-web/Login.jsp");
+        <%response.sendRedirect("/MTGleague-web/Login.jsp");
             %>
     </body>
 </html>

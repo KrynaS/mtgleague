@@ -37,6 +37,7 @@ if(nruser!=99999){%>
                 <tr>
                     
                     <th>NAZWA</th>
+                    <th>LOGO</th>
                     <th>KAPITAN</th>
                     <th>HASŁO</th>
                     <th>SZCZEGÓŁY</th>
@@ -98,11 +99,12 @@ if(nruser!=99999){%>
          String Nazwa=rs.getString(2);
          Integer Kapitan=rs.getInt(3);
          String haslo=rs.getString(4);
+         String logo = "Kontrolery/BlobController.jsp?id="+nr;
          
         
-         String adres="http://localhost:8080/MTGleague-web/TeamEdit.jsp?id="+nr;
-         String adres2="http://localhost:8080/MTGleague-web/TeamDetails.jsp?option=1&id="+nr;
-       
+         String adres="/MTGleague-web/TeamEdit.jsp?id="+nr;
+         String adres2="/MTGleague-web/TeamDetails.jsp?option=1&id="+nr;
+         String adresU="/MTGleague-web/Kontrolery/TeamDelete.jsp?id="+nr;
         %>
                     <%
                     for(int j=0;j<idList.size();j++){
@@ -115,6 +117,7 @@ if(nruser!=99999){%>
                     
                     %>
                     <td><%=Nazwa%></td>
+                        <td><img src="<%=logo%>" width="190" height="190"/></td>
                     <td><%=Kapitan2%></td>
                     <td><%=haslo%></td>
                     <td><input type="button" value="Szczegóły" onclick="location.href='<%=adres2%>';"></td>
@@ -124,6 +127,14 @@ if(nruser!=99999){%>
                   
            
            <%}%>
+           </td>
+           <td>
+                <% if(Kapitan==nruser){%>
+                  <input type="button" value="Usuń drużynę" onclick="location.href='<%=adresU%>';">
+                  
+           
+           <%}%>
+               
            </td>
                 </tr>
          
@@ -141,9 +152,9 @@ if(nruser!=99999){%>
       </tbody>
         </table>
       </br>
-      <a href="http://localhost:8080/MTGleague-web/TeamAdd.jsp">Stwórz drużynę</a>
+      <a href="/MTGleague-web/TeamAdd.jsp">Stwórz drużynę</a>
       </br>
-<a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

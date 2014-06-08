@@ -24,8 +24,8 @@ id = Integer.parseInt(request.getParameter("id"));
      catch(SQLException ex){}
      
 
-    if(admin!=1){response.sendRedirect("http://localhost:8080/MTGleague-web/MyTournaments.jsp");}else{
-    response.sendRedirect("http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp");
+    if(admin!=1){response.sendRedirect("/MTGleague-web/MyTournaments.jsp");}else{
+    response.sendRedirect("/MTGleague-web/TournamentAdminPanel.jsp");
     }
 
 

@@ -84,11 +84,11 @@ if(nruser!=99999){%>
          {
          Integer di=rs.getInt(1);
          String Nazwa=rs.getString(2);
-         
-         String adres="http://localhost:8080/MTGleague-web/TeamDetails.jsp?option=5&id="+di;
+         String logo= "Kontrolery/BlobController.jsp?id="+di;
+         String adres="/MTGleague-web/TeamDetails.jsp?option=5&id="+di;
          %>
                     <td><%=Nazwa%></td>
-                    <td></td>
+                         <td>       <img src="<%=logo%>" width="190" height="190"/></td>
                     <td><input type="button" value="Szczegóły" onclick="location.href='<%=adres%>';"></td>
 
                     
@@ -189,7 +189,7 @@ if(nruser!=99999){%>
         </table>
 <%}%>
 </br>
-<a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
 
         </body>
 </html>

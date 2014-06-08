@@ -67,11 +67,11 @@ if(admin==1){%>
          String email=rs.getString(7);
          Integer block=rs.getInt(8);
          Integer czyadmin=rs.getInt(9);
-         String adresdaj="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=2&id="+nruser;
-         String adreszabierz="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=3&id="+nruser;
-         String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
-         String adress="http://localhost:8080/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
-         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
+         String adresdaj="/MTGleague-web/Kontrolery/UserBlockController.jsp?option=2&id="+nruser;
+         String adreszabierz="/MTGleague-web/Kontrolery/UserBlockController.jsp?option=3&id="+nruser;
+         String adres="/MTGleague-web/Kontrolery/UserBlockController.jsp?option=1&id="+nruser;
+         String adress="/MTGleague-web/Kontrolery/UserBlockController.jsp?option=0&id="+nruser;
+         String adres2="/MTGleague-web/Kontrolery/UserDelete.jsp?id="+nruser;     
          %>
                     <td><%=nruser%></td>
                     <td><%=imie%></td>
@@ -116,7 +116,7 @@ if(admin==1){%>
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

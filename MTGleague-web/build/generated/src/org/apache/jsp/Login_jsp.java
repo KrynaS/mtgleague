@@ -31,7 +31,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -42,6 +42,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\n');
 if((String)session.getAttribute("login")==null){
 
         Integer zidusera=99999;
@@ -56,8 +57,9 @@ if((String)session.getAttribute("login")==null){
       out.write("     \n");
       out.write("        \n");
       out.write("        \n");
-      out.write("\n");
+      out.write(" \n");
       out.write("<html>\n");
+      out.write("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n");
       out.write("    <head><link rel=\"stylesheet\" type=\"text/css\" href=\"JS/css/style.css\"></head>\n");
       out.write("    <body>\n");
       out.write("<form method=\"post\" ACTION=\"Kontrolery/LoginController.jsp\">\n");
@@ -67,7 +69,7 @@ if((String)session.getAttribute("login")==null){
       out.write("<tr>\n");
       out.write("<td>E-mail</td><td><input type=\"text\" name=\"t1\" ></td>\n");
       out.write("</tr>\n");
-      out.write("    <td>Has?o</td>\n");
+      out.write("    <td>Hasło</td>\n");
       out.write("<td><input type=\"password\" name=\"t2\"></td>\n");
       out.write("</tr>\n");
       out.write("\n");
@@ -82,7 +84,7 @@ if((String)session.getAttribute("login")==null){
       out.write("</br>\n");
       out.write("    <center>\n");
       out.write("Nie masz konta?</center>\n");
-      out.write("<center><a href=\"http://localhost:8080/MTGleague-web/UserAdd.jsp\">Rejestracja</a></center>\n");
+      out.write("<center><a href=\"/MTGleague-web/UserAdd.jsp\">Rejestracja</a></center>\n");
       out.write("</body>\n");
       out.write("</html>\n");
       out.write("\n");

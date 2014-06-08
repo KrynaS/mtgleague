@@ -40,7 +40,7 @@ if(nruser!=99999){%>
      Statement st=con.createStatement();
      String query2 = "UPDATE Uzytkownik SET Imie='"+imie+"', Nick='"+nick+"', Haslo='"+haslo+"', Nazwisko='"+nazwisko+"' WHERE id="+nruser;
      st.executeUpdate(query2);
-          response.sendRedirect("http://localhost:8080/MTGleague-web/UserPanel.jsp");
+          response.sendRedirect("/MTGleague-web/UserPanel.jsp");
                             
              
 }catch(Exception e1)

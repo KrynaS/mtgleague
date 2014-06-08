@@ -32,6 +32,7 @@ if(admin==1){%>
                 <tr>
                     <th>ID</th>
                     <th>NAZWA</th>
+                    <th>LOGO</th>
                     <th>KAPITAN</th>
                     <th>HASŁO</th>
                     <th>ZABLOKOWANY</th>
@@ -59,13 +60,14 @@ if(admin==1){%>
          String Kapitan=rs.getString(3);
          String haslo=rs.getString(5);
          Integer block=rs.getInt(4);
-        
-         String adres="http://localhost:8080/MTGleague-web/Kontrolery/TeamBlockController.jsp?option=1&id="+nr;
-         String adress="http://localhost:8080/MTGleague-web/Kontrolery/TeamBlockController.jsp?option=0&id="+nr;
-         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/TeamDelete.jsp?id="+nr;     
+         String logo="Kontrolery/BlobController.jsp?id="+nr;
+         String adres="/MTGleague-web/Kontrolery/TeamBlockController.jsp?option=1&id="+nr;
+         String adress="/MTGleague-web/Kontrolery/TeamBlockController.jsp?option=0&id="+nr;
+         String adres2="/MTGleague-web/Kontrolery/TeamDelete.jsp?id="+nr;     
          %>
                     <td><%=nr%></td>
                     <td><%=Nazwa%></td>
+                            <td>       <img src="<%=logo%>" width="190" height="190"/></td>
                     <td><%=Kapitan%></td>
                     <td><%=haslo%></td>
                     <td><%=block%></td>
@@ -95,7 +97,7 @@ if(admin==1){%>
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

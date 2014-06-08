@@ -43,7 +43,7 @@ if(nruser!=99999){%>
 {}
 
     if(users.size()>0){
-           response.sendRedirect("http://localhost:8080/MTGleague-web/Already.jsp");
+           response.sendRedirect("/MTGleague-web/Already.jsp");
        }else{
 
     try{
@@ -56,7 +56,7 @@ if(nruser!=99999){%>
              String query2 = "INSERT INTO UzytkownikTurniej (IdUzytkownika,IdTurnieju) ";
              query2 += "VALUES('"+nruser+"', '"+ajdi+"');";
              st.executeUpdate(query2);
-            response.sendRedirect("http://localhost:8080/MTGleague-web/UserPanel.jsp");
+            response.sendRedirect("/MTGleague-web/UserPanel.jsp");
              
 
              
@@ -83,7 +83,7 @@ if(nruser!=99999){%>
 {}
 
     if(users.size()>0){
-           response.sendRedirect("http://localhost:8080/MTGleague-web/Already.jsp");}
+           response.sendRedirect("/MTGleague-web/Already.jsp");}
                  else{
 
     try{
@@ -96,7 +96,7 @@ if(nruser!=99999){%>
              String query2 = "INSERT INTO DruzynaTurniej (IdDruzyny,IdTurnieju) ";
              query2 += "VALUES('"+druzyna+"', '"+ajdi+"');";
              st.executeUpdate(query2);
-            response.sendRedirect("http://localhost:8080/MTGleague-web/UserPanel.jsp");
+            response.sendRedirect("/MTGleague-web/UserPanel.jsp");
              
 
              

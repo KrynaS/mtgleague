@@ -39,7 +39,7 @@ if(nruser!=99999){%>
      Statement st=con.createStatement();
      String query2 = "UPDATE Druzyna SET Nazwa='"+nazwa+"', Haslo='"+haslo+"' WHERE id='"+ajdi+"'";
      st.executeUpdate(query2);
-          response.sendRedirect("http://localhost:8080/MTGleague-web/YourTeams.jsp");
+          response.sendRedirect("/MTGleague-web/YourTeams.jsp");
                             
              
 }catch(Exception e1)

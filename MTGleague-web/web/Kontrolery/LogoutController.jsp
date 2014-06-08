@@ -22,7 +22,7 @@
         session.setAttribute("login","blank");
         session.setAttribute("idusera",99999);
         session.setAttribute("nrusera",99999);
-        response.sendRedirect("http://localhost:8080/MTGleague-web/Login.jsp");
+        response.sendRedirect("/MTGleague-web/Login.jsp");
 
 
 %>

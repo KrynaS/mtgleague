@@ -44,13 +44,13 @@ if(nruser!=99999){%>
 for(int i=0;i<users.size();i++){
     if(users.get(i)==nruser){
             juzjest=1;
-            response.sendRedirect("http://localhost:8080/MTGleague-web/Already.jsp");
+            response.sendRedirect("/MTGleague-web/Already.jsp");
        }
 
 }
             
 if(users.size()>4){
-response.sendRedirect("http://localhost:8080/MTGleague-web/TooMany.jsp");
+response.sendRedirect("/MTGleague-web/TooMany.jsp");
 }            
 else
 {
@@ -79,7 +79,7 @@ try{
      String query2 = "INSERT INTO DruzynaUzytkownik (IdDruzyny,IdUzytkownika) ";
      query2 += "VALUES('"+ajdi+"','"+nruser+"');";
      st.executeUpdate(query2);
-     response.sendRedirect("http://localhost:8080/MTGleague-web/YourTeams.jsp");
+     response.sendRedirect("/MTGleague-web/YourTeams.jsp");
              
 
              
@@ -87,7 +87,7 @@ try{
 {}
 }else{
 
-response.sendRedirect("http://localhost:8080/MTGleague-web/BadPass.jsp");
+response.sendRedirect("/MTGleague-web/BadPass.jsp");
 }
 }
 

@@ -36,6 +36,7 @@ if(nruser!=99999){%>
             <thead>
                 <tr>
                     <th>NAZWA</th>
+                    <th>LOGO</th>
                     <th></th>
                     <th></th>
                     
@@ -61,13 +62,13 @@ if(nruser!=99999){%>
          String Nazwa=rs.getString(2);
 
                  
-         String adres="http://localhost:8080/MTGleague-web/TeamDetails.jsp?option=5&id="+nr;
-         String adress="http://localhost:8080/MTGleague-web/TeamJoin.jsp?&id="+nr;
-    
+         String adres="/MTGleague-web/TeamDetails.jsp?option=5&id="+nr;
+         String adress="/MTGleague-web/TeamJoin.jsp?&id="+nr;
+         String logo="Kontrolery/BlobController.jsp?id="+nr;
          %>
                     <td><%=Nazwa%></td>
 
-                 
+                    <td>       <img src="<%=logo%>" width="190" height="190"/></td>
                    <td><input type="button" value="Szczegóły" onclick="location.href='<%=adres%>';">
            </td>
                 
@@ -89,7 +90,7 @@ if(nruser!=99999){%>
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

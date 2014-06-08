@@ -38,7 +38,7 @@ if(nruser!=99999){%>
                     <th>TERMIN</th>
                     <th>TYP</th>
                     <th></th>
-                    <th></th>
+               
                 </tr>
             </thead>
             <tbody>
@@ -61,11 +61,11 @@ if(nruser!=99999){%>
          String Typ=rs.getString(4);
          String ListaUczestnikow=rs.getString(5);
          if(Typ.equals("Two-Headed Giant")){
-         adres2="http://localhost:8080/MTGleague-web/TournamentJoin.jsp?option=1&id="+nr;}else{
-         adres2="http://localhost:8080/MTGleague-web/TournamentJoin.jsp?option=0&id="+nr;
+         adres2="/MTGleague-web/TournamentJoin.jsp?option=1&id="+nr;}else{
+         adres2="/MTGleague-web/TournamentJoin.jsp?option=0&id="+nr;
                   }         
          %>
-                    <td><%=nr%></td>
+                 
                     <td><%=Nazwa%></td>
                     <td><%=Data%></td>
                     <td><%=Typ%></td>
@@ -89,7 +89,7 @@ if(nruser!=99999){%>
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/UserPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

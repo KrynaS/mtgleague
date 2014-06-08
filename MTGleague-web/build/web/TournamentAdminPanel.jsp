@@ -49,7 +49,7 @@ if(admin==1){%>
      Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
-     ResultSet rs=st.executeQuery("select Id,Nazwa,Data,Typ,Zalozyciel from Turniej");
+     ResultSet rs=st.executeQuery("select t.Id,t.Nazwa,t.Data,t.Typ,u.Nick from Turniej t, Uzytkownik u Where t.Zalozyciel=u.Id");
      while(rs.next())
          {
          Integer nr=rs.getInt(1);
@@ -58,7 +58,7 @@ if(admin==1){%>
          String Typ=rs.getString(4);
          String ListaUczestnikow=rs.getString(5);
         
-         String adres2="http://localhost:8080/MTGleague-web/Kontrolery/TournamentDelete.jsp?id="+nr;     
+         String adres2="/MTGleague-web/Kontrolery/TournamentDelete.jsp?id="+nr;     
          %>
                     <td><%=nr%></td>
                     <td><%=Nazwa%></td>
@@ -84,7 +84,7 @@ if(admin==1){%>
         %>
       </tbody>
         </table>
-<a href="http://localhost:8080/MTGleague-web/AdminPanel.jsp">Powrót</a>
+<a href="/MTGleague-web/AdminPanel.jsp">Powrót</a>
         </body>
 </html>
 <%}%>

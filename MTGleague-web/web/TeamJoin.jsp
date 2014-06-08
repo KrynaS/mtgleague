@@ -44,7 +44,7 @@ if(nruser!=99999){
 </br>
 </br>
 
-<center><a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Powrót</a></center>
+<center><a href="/MTGleague-web/TeamsSearch.jsp">Powrót</a></center>
 </body>
 </html>
 

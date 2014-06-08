@@ -29,7 +29,7 @@ if(nruser!=99999){
         <% Integer opcja = Integer.parseInt(request.getParameter("option"));
            Integer ajdi = Integer.parseInt(request.getParameter("id"));
            if(opcja==0){
-           response.sendRedirect("http://localhost:8080/MTGleague-web/Kontrolery/JoinTournamentController.jsp?t6=0&option=0&id="+ajdi+"");
+           response.sendRedirect("/MTGleague-web/Kontrolery/JoinTournamentController.jsp?t6=0&option=0&id="+ajdi+"");
            }else{
 
 %>
@@ -110,7 +110,7 @@ if(nruser!=99999){
                 </br>
                  </br>
                   </br>
-<center><a href="http://localhost:8080/MTGleague-web/UserPanel.jsp">Powrót</a></center>
+<center><a href="/MTGleague-web/UserPanel.jsp">Powrót</a></center>
 </body>
 </html>
 

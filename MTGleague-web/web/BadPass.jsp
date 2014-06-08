@@ -23,7 +23,7 @@
 
     <center>
 Złe hasło</center>
-<center><a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Powrót</a></center>
+<center><a href="/MTGleague-web/TeamsSearch.jsp">Powrót</a></center>
 </body>
 </html>
 

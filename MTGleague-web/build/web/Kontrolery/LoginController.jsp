@@ -22,7 +22,7 @@ String pass=request.getParameter("t2");
 
      try{
     
-     Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+     Class.forName("com.mysql.jdbc.Driver");
      Connection con=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mtgleague","mtgadmin","mtglol123");
      Statement st=con.createStatement();
      ResultSet rs=st.executeQuery("select Email,Haslo,prawaAdmin,Id, czyZablokowany from Uzytkownik");
@@ -38,10 +38,10 @@ String pass=request.getParameter("t2");
               session.setAttribute("idusera",czyadmin);
               session.setAttribute("nrusera",nruser);
                  if(czyadmin!=1){
-                 response.sendRedirect("http://localhost:8080/MTGleague-web/UserPanel.jsp");
+                 response.sendRedirect("/MTGleague-web/UserPanel.jsp");
                 }
                       if(czyadmin==1){
-                          response.sendRedirect("http://localhost:8080/MTGleague-web/AdminPanel.jsp");
+                          response.sendRedirect("/MTGleague-web/AdminPanel.jsp");
 
                            }
          }
@@ -54,5 +54,7 @@ String pass=request.getParameter("t2");
        
        
        %>
+
+
     </body>
 </html>

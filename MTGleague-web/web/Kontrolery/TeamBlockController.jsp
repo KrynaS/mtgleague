@@ -47,7 +47,7 @@ opcja=Integer.parseInt(request.getParameter("option"));
      }
      st.executeUpdate(query3);
         
-     response.sendRedirect("http://localhost:8080/MTGleague-web/TeamsAdminPanel.jsp");
+     response.sendRedirect("/MTGleague-web/TeamsAdminPanel.jsp");
        
 }catch(Exception e1)
 {}

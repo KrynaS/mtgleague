@@ -44,7 +44,7 @@ if(nruser!=99999){%>
              String query2 = "INSERT INTO Turniej (Nazwa,Data,Typ,Zalozyciel) ";
              query2 += "VALUES('"+nazwa+"', '"+data+"', '"+typ+"' , '"+nruser+"');";
              st.executeUpdate(query2);
-             response.sendRedirect("http://localhost:8080/MTGleague-web/MyTournaments.jsp");
+             response.sendRedirect("/MTGleague-web/MyTournaments.jsp");
              
 
              

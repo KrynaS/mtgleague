@@ -38,7 +38,7 @@
 </br>
     <center>
 Nie masz konta?</center>
-<center><a href="http://localhost:8080/MTGleague-web/UserAdd.jsp">Rejestracja</a></center>
+<center><a href="/MTGleague-web/UserAdd.jsp">Rejestracja</a></center>
 </body>
 </html>
 

@@ -35,7 +35,8 @@ if(nruser!=99999){%>
         ajdi=Integer.parseInt(request.getParameter("id"));
                 
          Integer option=0;
-        option=Integer.parseInt(request.getParameter("option"));
+        if((String)session.getAttribute("option")!=null){
+        option=Integer.parseInt(request.getParameter("option"));}
         Integer kapitan=0;
          try{
     
@@ -69,7 +70,7 @@ if(nruser!=99999){%>
 
         <%
        
-        String adres2="http://localhost:8080/MTGleague-web/Kontrolery/UserLeaveTeamController.jsp?&id="+ajdi;
+        String adres2="/MTGleague-web/Kontrolery/UserLeaveTeamController.jsp?&id="+ajdi;
          
         ArrayList<Integer> myList = new ArrayList<Integer>();
                try{
@@ -104,7 +105,7 @@ if(nruser!=99999){%>
          String Nazwisko=rs.getString(3);
          String Nick=rs.getString(4);
          String email=rs.getString(5);
-         String adres="http://localhost:8080/MTGleague-web/Kontrolery/UserSetCaptainController.jsp?option="+ajdi+"&id="+di;
+         String adres="/MTGleague-web/Kontrolery/UserSetCaptainController.jsp?option="+ajdi+"&id="+di;
          %>
                     <td><%=imie%></td>
                     <td><%=Nazwisko%></td>
@@ -136,12 +137,12 @@ if(nruser!=99999){%>
                   </br>
                   </br>
                   <%if(option==1){%>
-<a href="http://localhost:8080/MTGleague-web/YourTeams.jsp">Powrót</a>
+<a href="/MTGleague-web/YourTeams.jsp">Powrót</a>
 <%}%>
 <%if(option==5){%>
-<a href="http://localhost:8080/MTGleague-web/TeamJoin.jsp?id=<%=ajdi%>">Dołącz</a>
+<a href="/MTGleague-web/TeamJoin.jsp?id=<%=ajdi%>">Dołącz</a>
 </br>
-<a href="http://localhost:8080/MTGleague-web/TeamsSearch.jsp">Powrót</a>
+<a href="/MTGleague-web/TeamsSearch.jsp">Powrót</a>
 <%}%>
         </body>
 </html>

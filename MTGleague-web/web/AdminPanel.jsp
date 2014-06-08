@@ -20,11 +20,12 @@ if(admin==1){%>
         <link rel="stylesheet" href="JS/css/style.css" />
     </head>
     <body>
-     <a href="http://localhost:8080/MTGleague-web/UsersAdminPanel.jsp">Użytkownicy</a></br>
-     <a href="http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp">Turnieje</a></br>
-     <a href="http://localhost:8080/MTGleague-web/TeamsAdminPanel.jsp">Drużyny</a></br>
+     <a href="/MTGleague-web/UsersAdminPanel.jsp">Użytkownicy</a></br>
+     <a href="/MTGleague-web/TournamentAdminPanel.jsp">Turnieje</a></br>
+     <a href="/MTGleague-web/TeamsAdminPanel.jsp">Drużyny</a></br>
+          <a href="UserPanel.jsp">Panel użytkownika</a></br>
      </br>
-     <a href="http://localhost:8080/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
+     <a href="/MTGleague-web/Kontrolery/LogoutController.jsp">Wyloguj</a></br>
     </body>
 </html>
 <%}%>

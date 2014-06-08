@@ -42,7 +42,7 @@ try{
              query2 += "VALUES('"+login+"','"+nruser+"');";
              st.executeUpdate(query2);     
            
-             response.sendRedirect("http://localhost:8080/MTGleague-web/YourTeams.jsp");
+             response.sendRedirect("/MTGleague-web/YourTeams.jsp");
 
                                   
              }

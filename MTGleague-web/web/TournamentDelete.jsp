@@ -27,7 +27,7 @@ id = Integer.parseInt(request.getParameter("id"));
      
 
 
-    response.sendRedirect("http://localhost:8080/MTGleague-web/TournamentAdminPanel.jsp");
+    response.sendRedirect("/MTGleague-web/TournamentAdminPanel.jsp");
 
 
 
