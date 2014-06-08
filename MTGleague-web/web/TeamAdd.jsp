@@ -31,6 +31,11 @@ if(nruser!=99999){%>
 <td>Hasło</td>
 <td><input type="password" id="t6" name="t6"></td>
 </tr>
+
+<tr>
+<td>Logo</td>
+<td><input type="file" name="t567" accept="image/png,image/jpeg,image/gif"/></td>
+</tr>
 </tbody>
 
 </table>
