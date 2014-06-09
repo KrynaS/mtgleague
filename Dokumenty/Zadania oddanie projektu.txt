@@ -1,5 +1,0 @@
-1. oprogramowanie
-2. dokumentacja projektowa + wdro¿enie
-3. dokument testów1 swój x2
-4. dokument testów2 czyjœ x2
-5. code review 3x przed i po
