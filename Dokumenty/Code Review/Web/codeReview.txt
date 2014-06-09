@@ -1,0 +1,3 @@
+usuniêcie zakomentowanego kodu, który nie bêdzie nigdy u¿yty
+zmniejszenie iloœci po³¹czeñ z baz¹ danych
+poprawienie formatowania kodu
