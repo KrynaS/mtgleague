@@ -1,0 +1,5 @@
+Reorganizacja importowanych bibliotek
+Usuniêcie niedzia³aj¹cych lub niepotrzebnych kawa³ków kodu
+Dodanie wiadomoœci podczas gdy wyrzucane s¹ wyj¹tki aplikacji
+Zakomentowanie nieu¿ywanych, ale przydatnych kawa³ków kodu
+Poprawienie formatowania kodu
