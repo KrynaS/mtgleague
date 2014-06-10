@@ -82,7 +82,7 @@ public class StworzTurniej extends JFrame {
     
     class ButtonOKListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(field.getText()==null || passfield.getText()==null){
+            if(field.getText()==null || passfield.getText()==null  || ((String)passfield.getText()).length()<10 ){
                 JOptionPane.showMessageDialog(null,
                             "Nie podano nazwy lub daty.",
                             "Error Message",
