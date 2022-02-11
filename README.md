@@ -1,4 +1,4 @@
 mtgleague
 =========
 
-projekt na ZIO 2014
+Project back from uni times, lets keep it here.
